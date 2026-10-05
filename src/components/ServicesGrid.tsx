@@ -39,6 +39,22 @@ const GWS = '/icons/googleworkspace.svg'
 const OPENAI = '/icons/openai.svg'
 const SLACK = '/icons/slack.svg'
 
+const TOOL_LOGOS = [
+  { name:'Google Workspace', src:GWS },
+  { name:'QuickBooks', mark:'QB' },
+  { name:'Xero', mark:'X' },
+  { name:'Shopee', mark:'S' },
+  { name:'Shopify', mark:'S' },
+  { name:'TikTok', mark:'♪' },
+  { name:'Amazon', mark:'a' },
+  { name:'Claude', src:'/icons/ai/claude-color.svg' },
+  { name:'GHL', src:'/icons/gohighlevel.png' },
+  { name:'ChatGPT', src:OPENAI },
+  { name:'Gemini', mark:'✦' },
+  { name:'Canva', mark:'C' },
+  { name:'Trello', mark:'▦' },
+]
+
 type Service = {
   index: string
   title: string
