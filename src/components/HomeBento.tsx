@@ -166,9 +166,9 @@ export default function HomeBento() {
         </ul>
       </Link>
 
-      {/* Testimonials: client cards drifting up a clipped column. */}
-      <Link to="/testimonials" className="bento__card bento__card--quotes">
-        <CardHead Icon={Quotes} title="Testimonials" desc="Professional strengths and working style" />
+      {/* Experience & Expertise: client cards drifting up a clipped column. */}
+      <Link to="/experience" className="bento__card bento__card--quotes">
+        <CardHead Icon={Quotes} title="Experience & Expertise" desc="Professional strengths and working style" />
         <div className="bento__media bento__reviews" aria-hidden="true">
           <div className="bento__reviews-track">
             {[...CLIENTS, ...CLIENTS].map((c, i) => (
