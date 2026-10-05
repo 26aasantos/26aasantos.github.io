@@ -14,20 +14,20 @@ import { profile } from '@/data/profile'
  * visual. Swap the marks below for your own (any square SVG/PNG in public/).
  */
 
-const N8N = { src: '/icons/ai/n8n.svg', name: 'n8n' }
-const ZAPIER = { src: '/icons/ai/zapier.svg', name: 'Zapier' }
-const DOCKER = { src: '/icons/ai/docker.svg', name: 'Docker' }
-const CLAUDE = { src: '/icons/ai/claude-color.svg', name: 'Claude' }
-const CODEX = { src: '/icons/ai/codex.svg', name: 'Codex' }
-const GLM = { src: '/icons/ai/zhipu.svg', name: 'GLM' }
-const QWEN = { src: '/icons/ai/qwen.svg', name: 'Qwen' }
-const HERMES = { src: '/icons/ai/hermes.svg', name: 'Hermes' }
-const NAMECHEAP = { src: '/icons/ai/namecheap.svg', name: 'Namecheap' }
-const CLOUDFLARE = { src: '/icons/ai/cloudflare.svg', name: 'Cloudflare' }
-const GITHUB = { src: '/icons/ai/github.svg', name: 'GitHub' }
-const GWS = { src: '/icons/googleworkspace.svg', name: 'Google Workspace' }
-const SLACK = { src: '/icons/ai/slack-color.svg', name: 'Slack' }
-const FIREFLIES = { src: '/icons/ai/fireflies.png', name: 'Fireflies' }
+const EXCEL = { src: '/icons/excel.svg', name: 'Excel' }
+const GWS2 = { src: '/icons/googleworkspace.svg', name: 'Google Workspace' }
+const QUICKBOOKS = { src: '/icons/quickbooks.svg', name: 'QuickBooks' }
+const XERO = { src: '/icons/xero.svg', name: 'Xero' }
+const SHOPEE = { src: '/icons/ai/shopee.svg', name: 'Shopee' }
+const LAZADA = { src: '/icons/ai/lazada.svg', name: 'Lazada' }
+const CANVA = { src: '/icons/canva.svg', name: 'Canva' }
+const CAPCUT = { src: '/icons/capcut.svg', name: 'CapCut' }
+const FACEBOOK = { src: '/icons/ai/facebook.svg', name: 'Facebook' }
+const INSTAGRAM = { src: '/icons/ai/instagram.svg', name: 'Instagram' }
+const TIKTOK = { src: '/icons/ai/tiktok.svg', name: 'TikTok' }
+const SLACK2 = { src: '/icons/ai/slack-color.svg', name: 'Slack' }
+const ZOOM = { src: '/icons/ai/zoom.svg', name: 'Zoom' }
+const TEAMS = { src: '/icons/ai/microsoft-teams.svg', name: 'Microsoft Teams' }
 
 type Capability = {
   index: string
@@ -36,26 +36,10 @@ type Capability = {
 }
 
 const CAPABILITIES: Capability[] = [
-  {
-    index: '01',
-    title: 'Your role 1',
-    marks: [N8N, ZAPIER, DOCKER],
-  },
-  {
-    index: '02',
-    title: 'Your role 2',
-    marks: [CLAUDE, CODEX, GLM, QWEN, HERMES],
-  },
-  {
-    index: '03',
-    title: 'Your role 3',
-    marks: [CLAUDE, CODEX, NAMECHEAP, CLOUDFLARE, GITHUB],
-  },
-  {
-    index: '04',
-    title: 'Your role 4',
-    marks: [GWS, SLACK, FIREFLIES],
-  },
+  { index: '01', title: 'E-commerce Operations', marks: [SHOPEE, LAZADA, CANVA] },
+  { index: '02', title: 'Accounting & Finance', marks: [EXCEL, QUICKBOOKS, XERO] },
+  { index: '03', title: 'Digital & Social Media', marks: [FACEBOOK, INSTAGRAM, TIKTOK, CAPCUT] },
+  { index: '04', title: 'Remote Business Support', marks: [GWS2, SLACK2, ZOOM, TEAMS] },
 ]
 
 export default function AboutGrid() {
@@ -67,24 +51,18 @@ export default function AboutGrid() {
           {`Hi, I’m ${profile.firstName}.`}
         </h1>
         <p className="pgrid__lede">
-          PLACEHOLDER - tell me what to put here: one line on what you do.
+          Detail-oriented professional supporting businesses through virtual assistance, e-commerce operations, accounting support, and practical digital workflows.
         </p>
       </header>
 
       <div className="home__glass agrid__glass">
         <div className="agrid__copy">
           <p className="agrid__lead">
-            Your big statement goes here, in one or two lines.
-            <span> A softer second half that finishes the thought.</span>
+            I combine hands-on business experience with accounting, administrative, e-commerce, and digital skills.\n            <span> My goal is simple: keep work organized, accurate, and moving forward.</span>
           </p>
 
           <p className="agrid__note">
-            <strong>Your company name</strong>, and{' '}
-            <a className="agrid__link" href="#">
-              your product
-            </a>{' '}
-            - PLACEHOLDER - tell me what to put here: two sentences on your company, what
-            you sell or build, and who it is for.
+            My background includes running an e-commerce business and working in Accounts Payable / Procure-to-Pay operations at Accenture. I now bring that practical experience into virtual assistance, bookkeeping, business support, and digital productivity.
           </p>
 
           <ul className="agrid__caps" role="list">
@@ -116,8 +94,8 @@ export default function AboutGrid() {
                 <img src="/placeholders/badge.svg" alt="" loading="lazy" decoding="async" />
               </span>
               <span className="agrid__cell-copy">
-                <span className="agrid__cell-title">Credential name</span>
-                <span className="agrid__cell-meta">Credential ID</span>
+                <span className="agrid__cell-title">B.S. Accounting Technology</span>
+                <span className="agrid__cell-meta">Cum Laude · 2014–2018</span>
               </span>
             </span>
 
@@ -127,17 +105,17 @@ export default function AboutGrid() {
               </span>
               <span className="agrid__cell-copy">
                 <span className="agrid__cell-title">{profile.location}</span>
-                <span className="agrid__cell-meta">Timezone · working hours</span>
+                <span className="agrid__cell-meta">Remote support · Philippines</span>
               </span>
             </span>
 
-            <a className="agrid__cell agrid__cell--wide" href="#">
+            <a className="agrid__cell agrid__cell--wide" href="mailto:26aasantos@gmail.com">
               <span className="agrid__cell-mark agrid__cell-mark--plain">
                 <img src="/placeholders/logo.svg" alt="" loading="lazy" decoding="async" />
               </span>
               <span className="agrid__cell-copy">
-                <span className="agrid__cell-title">Community or affiliation</span>
-                <span className="agrid__cell-meta">Your role there</span>
+                <span className="agrid__cell-title">Professional Training</span>
+                <span className="agrid__cell-meta">VA · Bookkeeping · Digital Skills</span>
               </span>
               <ArrowUpRight className="agrid__cell-go" size={15} weight="bold" aria-hidden="true" />
             </a>
