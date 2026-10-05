@@ -45,10 +45,13 @@ export default function Home() {
           </h1>
 
           {!phone && (
-            <div className="home__actions">\n            <Link className="home__cta home__cta--secondary" to="/cv">View CV</Link>\n            <Link className="home__cta" to="/contact">
-              Get in touch
-              <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
-            </Link>
+            <div className="home__actions">
+              <Link className="home__cta home__cta--secondary" to="/cv">View CV</Link>
+              <Link className="home__cta" to="/contact">
+                Get in touch
+                <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
+              </Link>
+            </div>
           )}
         </div>
 
