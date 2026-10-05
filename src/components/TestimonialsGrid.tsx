@@ -1,4 +1,4 @@
-import { Briefcase, Calculator, Buildings, Sparkle } from '@/components/slab'
+import { Briefcase, Calculator, Buildings, Robot } from '@/components/slab'
 import type { Icon } from '@/components/slab'
 
 type Experience = {
@@ -103,7 +103,7 @@ export default function ExperienceGrid() {
           </div>
 
           <div className="tgrid__ai-note">
-            <Sparkle size={18} weight="duotone" aria-hidden="true" />
+            <Robot size={18} weight="duotone" aria-hidden="true" />
             <div>
               <strong>AI-Assisted Productivity</strong>
               <span>Developing practical skills in AI-supported writing, research, organization, and repetitive work.</span>
