@@ -10,6 +10,7 @@ import {
   StarIcon,
   UserIcon,
   MessageIcon,
+  FileTextIcon,
 } from './RailIcons'
 import { getTheme, toggleTheme, type Theme } from '@/lib/theme'
 import { profile } from '@/data/profile'
@@ -33,6 +34,7 @@ export const RAIL_LINKS = [
   { label: 'Experience', to: '/experience', Icon: StarIcon },
   { label: 'About', to: '/about', Icon: UserIcon },
   { label: 'FAQs / Contact', to: '/contact', Icon: MessageIcon },
+  { label: 'CV / Resume', to: '/cv', Icon: FileTextIcon },
 ] as const
 
 export default function Rail() {
