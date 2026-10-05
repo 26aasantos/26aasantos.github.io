@@ -1,30 +1,9 @@
 export type QA = { q: string; a: string }
 
-/**
- * The questions people ask before they email. One list, used by the FAQ
- * accordion on the Contact view (and the legacy long-scroll FAQ section).
- * Five questions, two or three sentences each: the accordion sits in a
- * fixed panel and more than that pushes the email row off the plate.
- */
 export const FAQS: QA[] = [
-  {
-    q: 'What do you do?',
-    a: 'PLACEHOLDER - tell me what to put here: the kinds of work you take on, and who it is usually for.',
-  },
-  {
-    q: 'How fast can you start?',
-    a: 'PLACEHOLDER - tell me what to put here: your usual lead time for small fixes vs. larger projects, and your working hours.',
-  },
-  {
-    q: 'How much do you charge?',
-    a: 'PLACEHOLDER - tell me what to put here: how you price (hourly, per project, retainer) and how a quote is put together.',
-  },
-  {
-    q: 'Where are you based?',
-    a: 'PLACEHOLDER - tell me what to put here: your location or timezone, and which client timezones you overlap with.',
-  },
-  {
-    q: 'What happens after I write?',
-    a: 'PLACEHOLDER - tell me what to put here: how fast you reply and what the next step looks like.',
-  },
+  { q: 'What kind of work do you support?', a: 'I support day-to-day virtual assistance, e-commerce operations, accounting and finance support, and practical AI-assisted productivity workflows.' },
+  { q: 'Who do you work best with?', a: 'I am a good fit for entrepreneurs and growing businesses that need dependable administrative support, organized operations, and help using digital tools more effectively.' },
+  { q: 'Are you available for remote work?', a: 'Yes. I am based in the Philippines and can support remote teams and clients through digital collaboration tools.' },
+  { q: 'What makes your background different?', a: 'My experience combines e-commerce operations with accounting and finance support, giving me both an operations mindset and strong attention to detail.' },
+  { q: 'How can we get started?', a: 'Send me an email with a little context about your business and the support you need. We can then discuss the best way to work together.' },
 ]
