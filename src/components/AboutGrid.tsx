@@ -146,8 +146,8 @@ export default function AboutGrid() {
 
         <div className="agrid__portrait">
           <img
-            src="/avatar.svg"
-            alt="Portrait placeholder"
+            src={profile.avatarSrc}
+            alt={profile.hero.portraitAlt}
             loading="eager"
             decoding="async"
             width={400}
