@@ -13,8 +13,7 @@ import Autopilot, { TOOLS } from '@/components/Autopilot'
  * Projects: the glass, the bento card, plated marks, orange for the index
  * and the accent.
  *
- * Every string below is a PLACEHOLDER. Replace it, or hand this file to your
- * AI assistant and tell it what to put in each spot.
+ * Content is based on Alessandra's documented experience, skills, and training.
  */
 
 /* ---------- The method ---------- */
@@ -92,7 +91,7 @@ export default function ServicesGrid() {
             in order on the right with a signal running them. */}
         <div className="sgrid__method" aria-labelledby="method-title">
           <div className="sgrid__method-copy">
-            <span className="sgrid__method-eyebrow">Your Method</span>
+            <span className="sgrid__method-eyebrow">My Approach</span>
             <h2 className="sgrid__method-title" id="method-title">
               Understand. Organize. Improve.<br /><span>A practical way to support your workflow.</span>
             </h2>
@@ -126,7 +125,7 @@ export default function ServicesGrid() {
         {/* Five cards, each carrying the marks of what it is built with. */}
         <div className="sgrid__offers">
           <div className="sgrid__offers-head">
-            <h2 className="sgrid__offers-title">Your services, listed.</h2>
+            <h2 className="sgrid__offers-title">How I Can Help</h2>
             <p className="sgrid__offers-sub">Support built around real business operations, finance, e-commerce, and digital tools.</p>
           </div>
           <ul className="bento sgrid__services" role="list">
