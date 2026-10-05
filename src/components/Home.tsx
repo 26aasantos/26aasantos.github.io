@@ -45,7 +45,7 @@ export default function Home() {
           </h1>
 
           {!phone && (
-            <Link className="home__cta" to="/contact">
+            <div className="home__actions">\n            <Link className="home__cta home__cta--secondary" to="/cv">View CV</Link>\n            <Link className="home__cta" to="/contact">
               Get in touch
               <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
             </Link>
