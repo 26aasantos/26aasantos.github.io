@@ -1,4 +1,5 @@
-import { Briefcase, Calculator, Buildings, Sparkle } from 'lucide-react'
+import { Briefcase, Calculator, Buildings, Sparkle } from '@/components/slab'
+import type { Icon } from '@/components/slab'
 
 type Experience = {
   year: string
@@ -7,7 +8,7 @@ type Experience = {
   summary: string
   bullets: string[]
   tags: string[]
-  Icon: typeof Briefcase
+  Icon: Icon
 }
 
 const EXPERIENCE: Experience[] = [
