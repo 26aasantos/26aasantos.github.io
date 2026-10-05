@@ -37,9 +37,7 @@ const STAGES: Stage[] = [
 // Example tool marks from /public/icons. Swap for the tools you actually use.
 const GWS = '/icons/googleworkspace.svg'
 const OPENAI = '/icons/openai.svg'
-const EXCEL = '/icons/excel.svg'
-const QUICKBOOKS = '/icons/quickbooks.svg'
-const XERO = '/icons/xero.svg'
+const SLACK = '/icons/slack.svg'
 
 type Service = {
   index: string
@@ -53,8 +51,8 @@ type Service = {
 const SERVICES: Service[] = [
   { index:'01', title:'Virtual Assistance', description:'Dependable support for recurring administrative and business tasks.', chip:'Reliable support', logos:[GWS], bullets:['Administrative and clerical support','Data entry and record management','Email and online communication'] },
   { index:'02', title:'E-commerce Operations', description:'Practical support for keeping online business activities organized.', chip:'Operations support', logos:[GWS], bullets:['Shopee and Lazada seller platform support','Inventory and logistics coordination','Supplier and customer coordination'] },
-  { index:'03', title:'Accounting & Finance Support', description:'Detail-focused assistance backed by accounting and P2P experience.', chip:'Detail focused', logos:[QUICKBOOKS, XERO], bullets:['Accounts payable and invoice support','Bookkeeping and financial records','Expense tracking and reporting'] },
-  { index:'04', title:'Digital Productivity', description:'Helping turn scattered tasks into clearer digital workflows.', chip:'Work smarter', logos:[GWS, EXCEL], bullets:['Microsoft Office and Google Workspace','Data organization and reporting','Clear, repeatable processes'] },
+  { index:'03', title:'Accounting & Finance Support', description:'Detail-focused assistance backed by accounting and P2P experience.', chip:'Detail focused', logos:[SLACK], bullets:['Accounts payable and invoice support','Bookkeeping and financial records','Expense tracking and reporting'] },
+  { index:'04', title:'Digital Productivity', description:'Helping turn scattered tasks into clearer digital workflows.', chip:'Work smarter', logos:[GWS, SLACK], bullets:['Microsoft Office and Google Workspace','Data organization and reporting','Clear, repeatable processes'] },
   { index:'05', title:'AI-Assisted Productivity', description:'Practical use of AI to support writing, research, and repetitive work.', chip:'AI support', logos:[OPENAI], bullets:['AI-assisted writing','Research and summarization','Practical workflow improvement'] },
 ]
 
