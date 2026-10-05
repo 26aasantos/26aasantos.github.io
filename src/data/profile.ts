@@ -9,7 +9,7 @@ export const profile: Profile = {
   stats: [
     { value: '5+ yrs', label: 'E-commerce', Icon: Briefcase },
     { value: '2+ yrs', label: 'Accounting & Finance', Icon: SealCheck },
-    { value: '2025', label: 'VA & Bookkeeping Training', Icon: Clock },
+    { value: '2026', label: 'Ongoing Skill Development', Icon: Clock },
   ],
   displayName: { line1: 'Virtual Assistant', line2: 'Business & AI Support' },
   hero: { body: 'I support entrepreneurs and growing businesses with virtual assistance, e-commerce operations, accounting and finance support, and practical digital workflows.', portraitSrc: '/profile-photo.png', portraitAlt: 'Alessandra Santos' },
