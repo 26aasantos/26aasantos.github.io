@@ -1,72 +1,70 @@
-import { useState } from 'react'
-import { Play, Gauge, Robot, Code } from '@/components/slab'
-import type { Icon } from '@/components/slab'
+import { Briefcase, Calculator, Buildings, Sparkle } from 'lucide-react'
 
-/**
- * ExperienceGrid - the Experience view as a fixed viewport.
- *
- * Two columns inside one glass sheet: the video proof on the left, the client
- * ledger on the right. The page is sized to the panel and does not scroll, so
- * both clips share ONE stage and a picker switches between them rather than
- * stacking two players down a column that would never fit.
- *
- * Clips can disagree about orientation, so the stage is ONE fixed plate that
- * each is contained inside. Letting the frame take each clip's own ratio made
- * it jump size on every switch; a single plate keeps the card the same object
- * whichever is playing.
- *
- * To add a video: drop the .mp4 in public/experience/, set its `src` below
- * (e.g. '/experience/client-1.mp4'), and swap the poster for a still from
- * the clip. With `src` empty the cover stays up and play is disabled.
- */
-
-type Clip = {
-  id: string
-  index: string
-  /** Leave empty until you have the video file. */
-  src: string
-  poster: string
-  duration: string
-  kicker: string
-  width: number
-  height: number
+type Experience = {
+  year: string
+  title: string
+  company: string
+  summary: string
+  bullets: string[]
+  tags: string[]
+  Icon: typeof Briefcase
 }
 
-const CLIPS: Clip[] = [{ id:'focus', index:'01', src:'', poster:'/profile-photo.png', duration:'', kicker:'Professional profile', width:720, height:720 }]
-
-/* The client ledger. `logoSrc` is optional - without it the medallion falls
-   back to the icon. */
-
-type Client = {
-  index: string
-  name: string
-  role: string
-  daily: string
-  work: string[]
-  logoSrc?: string
-  Icon: Icon
-}
-
-const CLIENTS: Client[] = [
-  { index:'01', name:'E-commerce Operations', role:'5+ years of experience', daily:'Experience supporting online business operations with an organized, detail-focused approach.', work:['Operations','Coordination','Support'], Icon:Gauge },
-  { index:'02', name:'Accounting & Finance', role:'2+ years of experience', daily:'Experience supporting accounting and finance work where accuracy, organization, and consistency matter.', work:['Accuracy','Administration','Detail'], Icon:Robot },
-  { index:'03', name:'AI & Digital Productivity', role:'Developing practical skills', daily:'Building practical AI-assisted workflows to improve writing, research, organization, and repetitive tasks.', work:['AI support','Research','Workflows'], Icon:Code },
+const EXPERIENCE: Experience[] = [
+  {
+    year: '2020–2025',
+    title: 'Business Owner | E-commerce Operations & Administration',
+    company: 'Beauty Alley OPC',
+    summary:
+      'Managed the business from the ground up, overseeing end-to-end operations across e-commerce, administration, finance, procurement, inventory, logistics, customer service, and sales.',
+    bullets: [
+      'Managed both retail and wholesale operations, including 1,000–2,000 SKUs across product listings, inventory, purchasing, and distribution.',
+      'Processed 100+ orders per day, with peak periods reaching approximately 1,000–2,000 orders.',
+      'Managed Shopee and Lazada seller operations, including listings, orders, promotions, customer support, and fulfillment.',
+      'Coordinated suppliers, couriers, purchasing, inventory, and product distribution.',
+      'Managed business records, expenses, budgeting, payroll, supplier payments, bookkeeping, and cash-flow monitoring.',
+      'Supervised and trained a team of fewer than 10 employees and coordinated daily workflows.',
+      'Managed supplier relationships, including pricing, discounts, payment terms, and product requirements.',
+      'Managed online promotions and sales activities across Facebook, Instagram, TikTok, Shopee, and Lazada.',
+    ],
+    tags: ['E-commerce', 'Operations', 'Finance', 'Procurement', 'Leadership'],
+    Icon: Briefcase,
+  },
+  {
+    year: '2018–2019',
+    title: 'Accounts Payable (P2P) Operations Associate',
+    company: 'Accenture Philippines',
+    summary:
+      'Supported Accounts Payable and Procure-to-Pay operations, handling invoice, payment, vendor, and expense-related transactions.',
+    bullets: [
+      'Processed invoices with and without purchase orders.',
+      'Processed payment transactions and supported payment posting activities.',
+      'Reviewed vendor statements and helped resolve payment-related issues.',
+      'Processed and reviewed employee expense reports and other AP transactions.',
+      'Maintained accurate processing and completion of assigned transactions.',
+    ],
+    tags: ['Accounts Payable', 'P2P', 'Invoice Processing', 'Payments'],
+    Icon: Calculator,
+  },
+  {
+    year: '2017',
+    title: 'Bank Intern',
+    company: 'Land Bank of the Philippines',
+    summary:
+      'Supported branch operations through administrative, documentation, data-entry, and customer-facing activities while gaining hands-on exposure to banking processes.',
+    bullets: [
+      'Assisted with client documents, forms, and banking records.',
+      'Supported data entry, filing, and report preparation.',
+      'Assisted clients with transaction forms and basic banking inquiries.',
+      'Helped maintain accurate transaction records and financial logs.',
+      'Gained practical experience in banking operations, customer service, and data management.',
+    ],
+    tags: ['Banking', 'Administration', 'Customer Service', 'Records'],
+    Icon: Buildings,
+  },
 ]
 
 export default function ExperienceGrid() {
-  const [active, setActive] = useState(0)
-  // The stage shows the clip's poster as cover art until it is asked to
-  // play. A poster can fill the frame edge to edge whichever way the clip is
-  // shot; a paused <video> cannot, and letterboxing one orientation into a
-  // fixed frame left a third of the plate as dead margin.
-  const [playing, setPlaying] = useState(false)
-  const clip = CLIPS[active] ?? CLIPS[0]
-  const hasVideo = clip.src !== ''
-  const pick = (i: number) => {
-    setActive(i)
-    setPlaying(false)
-  }
-
   return (
     <section className="pgrid tgrid" aria-labelledby="experience-title">
       <header className="pgrid__head">
@@ -75,133 +73,77 @@ export default function ExperienceGrid() {
           Experience that supports the work
         </h1>
         <p className="pgrid__lede">
-          A blend of e-commerce, accounting and finance experience, supported by practical digital and AI-assisted productivity skills.
+          A hands-on background in e-commerce operations, accounting and finance,
+          administration, and business management, now complemented by practical
+          AI-assisted productivity skills.
         </p>
       </header>
 
-      <div className="home__glass tgrid__glass">
-        {/* Left: professional highlight area; video can be added later if desired. */}
-        <div className="tgrid__reel">
-          <div className="tgrid__stage">
-            {playing && hasVideo ? (
-              // Re-keyed so switching clips mounts a fresh element instead of
-              // swapping src on a player that is already mid-playback.
-              <video
-                key={clip.id}
-                className="tgrid__video"
-                src={clip.src}
-                poster={clip.poster}
-                width={clip.width}
-                height={clip.height}
-                controls
-                autoPlay
-                playsInline
-                aria-label={`Professional highlight ${clip.index}`}
-              />
-            ) : (
-              <button
-                type="button"
-                className="tgrid__cover"
-                onClick={() => hasVideo && setPlaying(true)}
-                disabled={!hasVideo}
-                aria-label={
-                  hasVideo
-                    ? `View professional highlight ${clip.index}`
-                    : `Professional focus ${clip.index}`
-                }
-              >
-                <img
-                  key={clip.id}
-                  className="tgrid__cover-img"
-                  src={clip.poster}
-                  alt=""
-                  decoding="async"
-                />
-                <span className="tgrid__cover-shade" aria-hidden="true" />
-                {hasVideo && (
-                  <span className="tgrid__cover-play" aria-hidden="true">
-                    <Play size={26} weight="fill" />
-                  </span>
-                )}
-                <span className="tgrid__cover-meta" aria-hidden="true">
-                  <span className="tgrid__cover-kicker">
-                    {clip.kicker} {clip.index}
-                  </span>
-                  <span className="tgrid__cover-sub">
-                    {hasVideo
-                      ? `${clip.duration} · Tap to play`
-                      : 'Experience highlights — no video required'}
-                  </span>
-                </span>
-              </button>
-            )}
+      <div className="home__glass tgrid__glass tgrid__experience-shell">
+        <div className="tgrid__career-panel">
+          <div className="tgrid__career-photo">
+            <img
+              src="/profile-photo.png"
+              alt="Alessandra Santos"
+              decoding="async"
+            />
+            <div className="tgrid__career-photo-overlay" aria-hidden="true" />
+            <div className="tgrid__career-photo-copy">
+              <span>Career foundation</span>
+              <strong>Business operations, finance &amp; e-commerce</strong>
+            </div>
           </div>
 
-          {/* The picker is one segmented control, not two loose chips: two
-              cells on a shared plate, the active one lit. */}
-          <div className="tgrid__picker" role="group" aria-label="Choose an experience highlight">
-            {CLIPS.map((c, i) => (
-              <button
-                key={c.id}
-                type="button"
-                className={`tgrid__pick${i === active ? ' is-active' : ''}`}
-                onClick={() => pick(i)}
-                aria-pressed={i === active}
-              >
-                <span className="tgrid__pick-thumb" aria-hidden="true">
-                  <img src={c.poster} alt="" loading="lazy" decoding="async" />
-                </span>
-                <span className="tgrid__pick-copy">
-                  <span className="tgrid__pick-kicker">Experience highlight {c.index}</span>
-                  <span className="tgrid__pick-meta">{c.duration}</span>
-                </span>
-              </button>
-            ))}
+          <div className="tgrid__metrics" aria-label="Experience highlights">
+            <div><strong>5+</strong><span>Years e-commerce</span></div>
+            <div><strong>1K–2K</strong><span>SKUs managed</span></div>
+            <div><strong>100+</strong><span>Daily orders</span></div>
+            <div><strong>&lt;10</strong><span>Employees supervised</span></div>
+          </div>
+
+          <div className="tgrid__ai-note">
+            <Sparkle size={18} weight="duotone" aria-hidden="true" />
+            <div>
+              <strong>AI-Assisted Productivity</strong>
+              <span>Developing practical skills in AI-supported writing, research, organization, and repetitive work.</span>
+            </div>
           </div>
         </div>
 
-        {/* Right: the client ledger, one row per client. */}
         <div className="tgrid__ledger">
           <div className="tgrid__ledger-head">
-            <h2 className="tgrid__ledger-title">What I bring</h2>
-            <p className="tgrid__ledger-sub">Reliable support backed by real operations experience.</p>
+            <h2 className="tgrid__ledger-title">Professional experience</h2>
+            <p className="tgrid__ledger-sub">
+              A progression from finance and banking into hands-on business ownership and operations.
+            </p>
           </div>
 
-          {/* One plate, three rows split by hairlines. Three boxed cards each
-              carrying their own border read as three separate widgets; a
-              single ledger reads as one record. */}
-          <ul className="tgrid__clients" role="list">
-            {CLIENTS.map((c) => {
-              const FallbackIcon = c.Icon
+          <ol className="tgrid__timeline">
+            {EXPERIENCE.map((item) => {
+              const Icon = item.Icon
               return (
-                <li key={c.index} className="tgrid__client">
-                  <span className="tgrid__client-ghost" aria-hidden="true">{c.index}</span>
-                  <span className="tgrid__client-mark" aria-hidden="true">
-                    {c.logoSrc ? (
-                      <img src={c.logoSrc} alt="" loading="lazy" decoding="async" />
-                    ) : (
-                      <FallbackIcon size={22} weight="duotone" />
-                    )}
-                  </span>
-
-                  <span className="tgrid__client-body">
-                    <span className="tgrid__client-head">
-                      <span className="tgrid__client-name">{c.name}</span>
-                      <span className="tgrid__client-role">{c.role}</span>
-                    </span>
-                    <span className="tgrid__client-daily">{c.daily}</span>
-                    <ul className="tgrid__client-tags" role="list">
-                      {c.work.map((w, i) => (
-                        <li key={`${w}-${i}`} className="tgrid__client-tag">
-                          {w}
-                        </li>
-                      ))}
+                <li key={item.year} className="tgrid__timeline-item">
+                  <div className="tgrid__timeline-marker" aria-hidden="true">
+                    <Icon size={19} strokeWidth={2} />
+                  </div>
+                  <div className="tgrid__timeline-content">
+                    <div className="tgrid__timeline-top">
+                      <span className="tgrid__timeline-year">{item.year}</span>
+                      <span className="tgrid__timeline-company">{item.company}</span>
+                    </div>
+                    <h3>{item.title}</h3>
+                    <p className="tgrid__timeline-summary">{item.summary}</p>
+                    <ul className="tgrid__timeline-bullets">
+                      {item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
                     </ul>
-                  </span>
+                    <ul className="tgrid__timeline-tags" aria-label="Skills">
+                      {item.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                    </ul>
+                  </div>
                 </li>
               )
             })}
-          </ul>
+          </ol>
         </div>
       </div>
     </section>
