@@ -9,18 +9,18 @@ type Tool = {
 
 export const tools: Tool[] = [
   { name: 'Google Workspace', iconPath: '/icons/googleworkspace.svg' },
-  { name: 'QuickBooks', mark: 'QB' },
-  { name: 'Xero', mark: 'X' },
-  { name: 'Shopee', mark: 'S' },
-  { name: 'Shopify', mark: 'S' },
-  { name: 'TikTok', mark: '♪' },
-  { name: 'Amazon', mark: 'a' },
+  { name: 'QuickBooks', iconPath: '/icons/tools/quickbooks.png' },
+  { name: 'Xero', iconPath: '/icons/tools/xero.png' },
+  { name: 'Shopee', iconPath: '/icons/tools/shopee.png' },
+  { name: 'Shopify', iconPath: '/icons/tools/shopify.png' },
+  { name: 'TikTok', iconPath: '/icons/tools/tiktok.png' },
+  { name: 'Amazon', iconPath: '/icons/tools/amazon.png' },
   { name: 'Claude', iconPath: '/icons/ai/claude-color.svg' },
   { name: 'GHL', iconPath: '/icons/gohighlevel.png' },
   { name: 'ChatGPT', iconPath: '/icons/openai.svg' },
-  { name: 'Gemini', mark: '✦' },
-  { name: 'Canva', mark: 'C' },
-  { name: 'Trello', mark: '▦' },
+  { name: 'Gemini', iconPath: '/icons/tools/gemini.png' },
+  { name: 'Canva', iconPath: '/icons/tools/canva.png' },
+  { name: 'Trello', iconPath: '/icons/tools/trello.png' },
 ]
 
 export default function ToolsMarquee() {
