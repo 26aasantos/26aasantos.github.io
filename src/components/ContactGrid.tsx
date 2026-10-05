@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { PaperPlaneTilt, CheckCircle, WarningCircle, EnvelopeSimple, ArrowUpRight, CaretDown } from '@/components/slab'
 import { FAQS } from '@/data/faqs'
 import { profile } from '@/data/profile'
@@ -104,10 +105,16 @@ export default function ContactGrid() {
           </ul>
 
           <div className="cgrid__direct">
-            <a className="cgrid__mail" href={`mailto:${profile.email}`}>
-              <EnvelopeSimple size={16} weight="fill" aria-hidden="true" />
-              <span>{profile.email}</span>
-            </a>
+            <div className="cgrid__direct-actions">
+              <a className="cgrid__mail" href={`mailto:${profile.email}`}>
+                <EnvelopeSimple size={16} weight="fill" aria-hidden="true" />
+                <span>{profile.email}</span>
+              </a>
+              <Link className="cgrid__cv" to="/cv">
+                View CV / Resume
+                <ArrowUpRight size={14} weight="bold" aria-hidden="true" />
+              </Link>
+            </div>
             <ul className="cgrid__socials" role="list">
               {profile.socials.map((s) => (
                 <li key={s.label}>
