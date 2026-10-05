@@ -515,8 +515,7 @@
   margin: 0;
   padding: 0 4px 0 0;
   list-style: none;
-  overflow: auto;
-  scrollbar-width: thin;
+  overflow: visible;
 }
 
 .tgrid__timeline-item {
@@ -638,7 +637,7 @@
 }
 
 
-/* The experience ledger is a real reading page. Let the shell scroller carry the full content instead of trapping a tall timeline inside a fixed sheet. */
+/* The experience page is a normal reading page. The shell panel owns scrolling; the timeline must not create a second nested scroll area. */
 @media (min-width: 1100px) {
   .pgrid.tgrid { height: auto; min-height: 100%; display: flex; }
   .tgrid__glass { height: auto; min-height: 0; }
