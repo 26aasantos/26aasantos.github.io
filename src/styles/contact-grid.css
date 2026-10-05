@@ -439,3 +439,12 @@
   .cgrid__label, .cgrid__step-index { font-size: 12px; }
   .cgrid__hint { font-size: 12.5px; }
 }
+
+
+/* Contact/FAQ is a reading page too. Keep the FAQ list usable while allowing the outer shell to scroll when the full contact sheet is taller than the viewport. */
+@media (min-width: 1100px) {
+  .pgrid.cgrid { height: auto; min-height: 100%; display: flex; }
+  .cgrid__glass { height: auto; min-height: 0; }
+  .cgrid__aside { max-height: none; }
+  .cgrid__faqs { max-height: 46vh; }
+}
