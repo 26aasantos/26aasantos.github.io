@@ -36,18 +36,12 @@ const STAGES: Stage[] = [
 /* ---------- The services ---------- */
 
 // Example tool marks from /public/icons. Swap for the tools you actually use.
-const GHL = '/icons/gohighlevel.png'
-const REACT = '/icons/ai/react.svg'
-const TAILWIND = '/icons/ai/tailwindcss.svg'
-const VITE = '/icons/ai/vite.svg'
-const CLOUDFLARE = '/icons/ai/cloudflare.svg'
-const N8N = '/icons/ai/n8n.svg'
-const OPENAI = '/icons/openai.svg'
 const GWS = '/icons/googleworkspace.svg'
-const SLACK = '/icons/slack.svg'
-const CLAUDE_CODE = '/icons/claude-code-logo.png'
-const EXPO = '/icons/ai/expo.svg'
-const CHROME = '/icons/ai/googlechrome.svg'
+const OPENAI = '/icons/openai.svg'
+const CANVA = '/icons/canva.svg'
+const EXCEL = '/icons/excel.svg'
+const QUICKBOOKS = '/icons/quickbooks.svg'
+const XERO = '/icons/xero.svg'
 
 type Service = {
   index: string
@@ -59,11 +53,11 @@ type Service = {
 }
 
 const SERVICES: Service[] = [
-  { index:'01', title:'Virtual Assistance', description:'Dependable support for recurring administrative and business tasks.', chip:'Reliable support', logos:[GWS, SLACK], bullets:['Task and information organization','Clear day-to-day communication','Consistent follow-through'] },
-  { index:'02', title:'E-commerce Operations', description:'Practical support for keeping online business activities organized.', chip:'Operations support', logos:[GWS, CHROME], bullets:['Order and task coordination','Product and information upkeep','Routine operational support'] },
-  { index:'03', title:'Accounting & Finance Support', description:'Detail-focused assistance for organized financial administration.', chip:'Detail focused', logos:[GWS], bullets:['Record and information organization','Administrative finance support','Accuracy and consistency'] },
-  { index:'04', title:'Digital Productivity', description:'Helping turn scattered tasks into clearer digital workflows.', chip:'Work smarter', logos:[GWS, SLACK], bullets:['Workflow organization','Digital tool support','Repeatable processes'] },
-  { index:'05', title:'AI-Assisted Productivity', description:'Practical use of AI to support writing, research, and repetitive work.', chip:'AI support', logos:[OPENAI], bullets:['AI-assisted drafting','Research and summarization','Workflow experimentation'] },
+  { index:'01', title:'Virtual Assistance', description:'Dependable support for recurring administrative and business tasks.', chip:'Reliable support', logos:[GWS], bullets:['Administrative and clerical support','Data entry and record management','Email and online communication'] },
+  { index:'02', title:'E-commerce Operations', description:'Practical support for keeping online business activities organized.', chip:'Operations support', logos:[GWS], bullets:['Shopee and Lazada seller platform support','Inventory and logistics coordination','Supplier and customer coordination'] },
+  { index:'03', title:'Accounting & Finance Support', description:'Detail-focused assistance backed by accounting and P2P experience.', chip:'Detail focused', logos:[QUICKBOOKS, XERO], bullets:['Accounts payable and invoice support','Bookkeeping and financial records','Expense tracking and reporting'] },
+  { index:'04', title:'Digital Productivity', description:'Helping turn scattered tasks into clearer digital workflows.', chip:'Work smarter', logos:[GWS, EXCEL], bullets:['Microsoft Office and Google Workspace','Data organization and reporting','Clear, repeatable processes'] },
+  { index:'05', title:'AI-Assisted Productivity', description:'Practical use of AI to support writing, research, and repetitive work.', chip:'AI support', logos:[OPENAI], bullets:['AI-assisted writing','Research and summarization','Practical workflow improvement'] },
 ]
 
 /** The tool marks, stacked horizontally on white tiles (same as Projects). */
@@ -134,7 +128,7 @@ export default function ServicesGrid() {
         <div className="sgrid__offers">
           <div className="sgrid__offers-head">
             <h2 className="sgrid__offers-title">Your services, listed.</h2>
-            <p className="sgrid__offers-sub">PLACEHOLDER - one short nudge.</p>
+            <p className="sgrid__offers-sub">Support built around real business operations, finance, e-commerce, and digital tools.</p>
           </div>
           <ul className="bento sgrid__services" role="list">
             {SERVICES.map((s) => (
@@ -166,7 +160,7 @@ export default function ServicesGrid() {
         <div className="sgrid__flow">
           <header className="sgrid__flow-head">
             <div className="sgrid__flow-copy">
-              <span className="sgrid__flow-eyebrow">Live automation</span>
+              <span className="sgrid__flow-eyebrow">Workflow approach</span>
               <h2 className="sgrid__flow-title">A practical workflow mindset</h2>
               <p className="sgrid__flow-sub">
                 I focus on reducing friction in repetitive work while keeping people, information, and next steps organized.
