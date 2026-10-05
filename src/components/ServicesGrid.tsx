@@ -34,25 +34,31 @@ const STAGES: Stage[] = [
 
 /* ---------- The services ---------- */
 
-// Example tool marks from /public/icons. Swap for the tools you actually use.
 const GWS = '/icons/googleworkspace.svg'
 const OPENAI = '/icons/openai.svg'
 const SLACK = '/icons/slack.svg'
 
+/**
+ * Tool logos use recognizable brand SVG marks. Where a public official asset
+ * is not provided as a stable downloadable file, the portfolio uses the
+ * brand-accurate SVG from Simple Icons. Canva uses Canva's published SVG,
+ * while Amazon uses the current 2024 Amazon mark mirrored from its published
+ * logo artwork. Logos are presented only to identify the tools used.
+ */
 const TOOL_LOGOS = [
   { name:'Google Workspace', src:GWS },
-  { name:'QuickBooks', mark:'QB' },
-  { name:'Xero', mark:'X' },
-  { name:'Shopee', mark:'S' },
-  { name:'Shopify', mark:'S' },
-  { name:'TikTok', mark:'♪' },
-  { name:'Amazon', mark:'a' },
+  { name:'QuickBooks', src:'https://cdn.simpleicons.org/quickbooks/2CA01C' },
+  { name:'Xero', src:'https://cdn.simpleicons.org/xero/13B5EA' },
+  { name:'Shopee', src:'https://cdn.simpleicons.org/shopee/EE4D2D' },
+  { name:'Shopify', src:'https://cdn.simpleicons.org/shopify/95BF47' },
+  { name:'TikTok', src:'https://cdn.simpleicons.org/tiktok/000000' },
+  { name:'Amazon', src:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Amazon_2024.svg' },
   { name:'Claude', src:'/icons/ai/claude-color.svg' },
   { name:'GHL', src:'/icons/gohighlevel.png' },
   { name:'ChatGPT', src:OPENAI },
-  { name:'Gemini', mark:'✦' },
-  { name:'Canva', mark:'C' },
-  { name:'Trello', mark:'▦' },
+  { name:'Gemini', src:'https://cdn.simpleicons.org/googlegemini/8E75B2' },
+  { name:'Canva', src:'https://static.canva.com/web/images/8439b51bb7a19f6e65ce1064bc37c197.svg' },
+  { name:'Trello', src:'https://cdn.simpleicons.org/trello/0C66E4' },
 ]
 
 type Service = {
@@ -109,7 +115,9 @@ export default function ServicesGrid() {
           <ul className="sgrid__tool-grid" role="list">
             {TOOL_LOGOS.map((tool) => (
               <li key={tool.name} className="sgrid__tool-item">
-                <span className="sgrid__tool-logo">{tool.src ? <img src={tool.src} alt="" width={28} height={28} decoding="async" /> : <span className="sgrid__tool-mark" aria-hidden="true">{tool.mark}</span>}</span>
+                <span className="sgrid__tool-logo">
+                  <img src={tool.src} alt="" width={30} height={30} decoding="async" loading="lazy" />
+                </span>
                 <span>{tool.name}</span>
               </li>
             ))}
