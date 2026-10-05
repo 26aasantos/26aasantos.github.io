@@ -130,6 +130,13 @@
   gap: 10px 14px;
   flex: 0 0 auto;
 }
+.cgrid__direct-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
 .cgrid__mail {
   display: inline-flex;
   align-items: center;
@@ -149,6 +156,23 @@
 .cgrid__mail svg { color: var(--orange); flex: 0 0 auto; }
 .cgrid__mail:hover { background: rgba(255, 255, 255, 0.10); transform: translateY(-1px); }
 .cgrid__mail:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+.cgrid__cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 13px;
+  border-radius: var(--radius-pill);
+  font-size: clamp(12px, 0.8vw, 13.5px);
+  font-weight: 700;
+  color: var(--orange);
+  text-decoration: none;
+  background: rgba(255, 122, 26, 0.10);
+  box-shadow: inset 0 0 0 1px rgba(255, 122, 26, 0.24);
+  transition: background 200ms var(--ease-out), transform 220ms var(--ease-spring);
+  white-space: nowrap;
+}
+.cgrid__cv:hover { background: rgba(255, 122, 26, 0.16); transform: translateY(-1px); }
+.cgrid__cv:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
 .cgrid__socials { display: flex; gap: 8px; margin: 0; padding-left: 0; list-style: none; }
 .cgrid__social {
   display: grid;
@@ -381,7 +405,7 @@
 }
 @media (max-width: 560px) {
   .cgrid__row { grid-template-columns: minmax(0, 1fr); }
-  .cgrid__direct { flex-direction: column; align-items: flex-start; }
+  .cgrid__direct { flex-direction: column; align-items: flex-start; }\n  .cgrid__direct-actions { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
