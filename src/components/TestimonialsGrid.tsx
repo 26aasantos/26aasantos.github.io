@@ -75,12 +75,12 @@ export default function TestimonialsGrid() {
           Experience that supports the work
         </h1>
         <p className="pgrid__lede">
-          A blend of e-commerce, accounting and finance experience, with a growing focus on practical AI-assisted productivity.
+          A blend of e-commerce, accounting and finance experience, supported by practical digital and AI-assisted productivity skills.
         </p>
       </header>
 
       <div className="home__glass tgrid__glass">
-        {/* Left: one stage, two clips. */}
+        {/* Left: professional highlight area; video can be added later if desired. */}
         <div className="tgrid__reel">
           <div className="tgrid__stage">
             {playing && hasVideo ? (
@@ -96,7 +96,7 @@ export default function TestimonialsGrid() {
                 controls
                 autoPlay
                 playsInline
-                aria-label={`Video testimonial ${clip.index} from a client`}
+                aria-label={`Professional highlight ${clip.index}`}
               />
             ) : (
               <button
@@ -106,8 +106,8 @@ export default function TestimonialsGrid() {
                 disabled={!hasVideo}
                 aria-label={
                   hasVideo
-                    ? `Play client testimonial ${clip.index}, ${clip.duration}`
-                    : `Professional focus ${clip.index}, no video added yet`
+                    ? `View professional highlight ${clip.index}`
+                    : `Professional focus ${clip.index}`
                 }
               >
                 <img
@@ -152,7 +152,7 @@ export default function TestimonialsGrid() {
                   <img src={c.poster} alt="" loading="lazy" decoding="async" />
                 </span>
                 <span className="tgrid__pick-copy">
-                  <span className="tgrid__pick-kicker">Testimonial {c.index}</span>
+                  <span className="tgrid__pick-kicker">Highlight {c.index}</span>
                   <span className="tgrid__pick-meta">{c.duration}</span>
                 </span>
               </button>
