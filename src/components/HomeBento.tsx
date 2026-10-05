@@ -131,7 +131,7 @@ export default function HomeBento() {
         </div>
       </Link>
 
-      {/* Credentials: the badge that matters, on its plate. */}
+      {/* Credentials: experience and training highlights. */}
       <Link to="/about" className="bento__card bento__card--creds">
         <CardHead Icon={Medal} title="Credentials" desc="Experience and professional highlights" />
         <div className="bento__media bento__badge" aria-hidden="true">
@@ -140,7 +140,7 @@ export default function HomeBento() {
           </span>
           <span className="bento__badge-tag">
             <SealCheck size={14} weight="fill" />
-            Your Credential
+            Professional Highlights
           </span>
         </div>
       </Link>
