@@ -39,26 +39,24 @@ const OPENAI = '/icons/openai.svg'
 const SLACK = '/icons/slack.svg'
 
 /**
- * Tool logos use recognizable brand SVG marks. Where a public official asset
- * is not provided as a stable downloadable file, the portfolio uses the
- * brand-accurate SVG from Simple Icons. Canva uses Canva's published SVG,
- * while Amazon uses the current 2024 Amazon mark mirrored from its published
- * logo artwork. Logos are presented only to identify the tools used.
+ * Tool logos are stored locally so the portfolio does not depend on external
+ * CDN/hotlink availability. The uploaded logo set was reviewed and the
+ * requested tool marks are presented as local SVG assets.
  */
 const TOOL_LOGOS = [
   { name:'Google Workspace', src:GWS },
-  { name:'QuickBooks', src:'https://cdn.simpleicons.org/quickbooks/2CA01C' },
-  { name:'Xero', src:'https://cdn.simpleicons.org/xero/13B5EA' },
-  { name:'Shopee', src:'https://cdn.simpleicons.org/shopee/EE4D2D' },
-  { name:'Shopify', src:'https://cdn.simpleicons.org/shopify/95BF47' },
-  { name:'TikTok', src:'https://cdn.simpleicons.org/tiktok/000000' },
-  { name:'Amazon', src:'https://commons.wikimedia.org/wiki/Special:Redirect/file/Amazon_2024.svg' },
+  { name:'QuickBooks', src:'/icons/tools/quickbooks.svg' },
+  { name:'Xero', src:'/icons/tools/xero.svg' },
+  { name:'Shopee', src:'/icons/tools/shopee.svg' },
+  { name:'Shopify', src:'/icons/tools/shopify.svg' },
+  { name:'TikTok', src:'/icons/tools/tiktok.svg' },
+  { name:'Amazon', src:'/icons/tools/amazon.svg' },
   { name:'Claude', src:'/icons/ai/claude-color.svg' },
   { name:'GHL', src:'/icons/gohighlevel.png' },
   { name:'ChatGPT', src:OPENAI },
-  { name:'Gemini', src:'https://cdn.simpleicons.org/googlegemini/8E75B2' },
-  { name:'Canva', src:'https://static.canva.com/web/images/8439b51bb7a19f6e65ce1064bc37c197.svg' },
-  { name:'Trello', src:'https://cdn.simpleicons.org/trello/0C66E4' },
+  { name:'Gemini', src:'/icons/tools/gemini.svg' },
+  { name:'Canva', src:'/icons/tools/canva.svg' },
+  { name:'Trello', src:'/icons/tools/trello.svg' },
 ]
 
 type Service = {
@@ -124,8 +122,6 @@ export default function ServicesGrid() {
           </ul>
         </section>
 
-        {/* One dark plate, the headline on the left, the three stages wired
-            in order on the right with a signal running them. */}
         <div className="sgrid__method" aria-labelledby="method-title">
           <div className="sgrid__method-copy">
             <span className="sgrid__method-eyebrow">My Approach</span>
@@ -159,7 +155,6 @@ export default function ServicesGrid() {
           </ol>
         </div>
 
-        {/* Five cards, each carrying the marks of what it is built with. */}
         <div className="sgrid__offers">
           <div className="sgrid__offers-head">
             <h2 className="sgrid__offers-title">How I Can Help</h2>
@@ -190,8 +185,6 @@ export default function ServicesGrid() {
           </ul>
         </div>
 
-        {/* The live workflow. Its caption and the tool chips sit in a header
-            above the window, so the canvas gets the whole glass width. */}
         <div className="sgrid__flow">
           <header className="sgrid__flow-head">
             <div className="sgrid__flow-copy">
