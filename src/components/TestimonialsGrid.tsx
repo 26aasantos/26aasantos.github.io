@@ -15,8 +15,8 @@ import type { Icon } from '@/components/slab'
  * it jump size on every switch; a single plate keeps the card the same object
  * whichever is playing.
  *
- * To add a video: drop the .mp4 in public/testimonials/, set its `src` below
- * (e.g. '/testimonials/client-1.mp4'), and swap the poster for a still from
+ * To add a video: drop the .mp4 in public/experience/, set its `src` below
+ * (e.g. '/experience/client-1.mp4'), and swap the poster for a still from
  * the clip. With `src` empty the cover stays up and play is disabled.
  */
 
@@ -53,7 +53,7 @@ const CLIENTS: Client[] = [
   { index:'03', name:'AI & Digital Productivity', role:'Developing practical skills', daily:'Building practical AI-assisted workflows to improve writing, research, organization, and repetitive tasks.', work:['AI support','Research','Workflows'], Icon:Code },
 ]
 
-export default function TestimonialsGrid() {
+export default function ExperienceGrid() {
   const [active, setActive] = useState(0)
   // The stage shows the clip's poster as cover art until it is asked to
   // play. A poster can fill the frame edge to edge whichever way the clip is
