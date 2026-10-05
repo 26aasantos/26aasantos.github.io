@@ -45,18 +45,18 @@ const SLACK = '/icons/slack.svg'
  */
 const TOOL_LOGOS = [
   { name:'Google Workspace', src:GWS },
-  { name:'QuickBooks', src:'/icons/tools/quickbooks.svg' },
-  { name:'Xero', src:'/icons/tools/xero.svg' },
-  { name:'Shopee', src:'/icons/tools/shopee.svg' },
-  { name:'Shopify', src:'/icons/tools/shopify.svg' },
-  { name:'TikTok', src:'/icons/tools/tiktok.svg' },
-  { name:'Amazon', src:'/icons/tools/amazon.svg' },
+  { name:'QuickBooks', src:'/icons/tools/quickbooks.png' },
+  { name:'Xero', src:'/icons/tools/xero.png' },
+  { name:'Shopee', src:'/icons/tools/shopee.png' },
+  { name:'Shopify', src:'/icons/tools/shopify.png' },
+  { name:'TikTok', src:'/icons/tools/tiktok.png' },
+  { name:'Amazon', src:'/icons/tools/amazon.png' },
   { name:'Claude', src:'/icons/ai/claude-color.svg' },
   { name:'GHL', src:'/icons/gohighlevel.png' },
   { name:'ChatGPT', src:OPENAI },
-  { name:'Gemini', src:'/icons/tools/gemini.svg' },
-  { name:'Canva', src:'/icons/tools/canva.svg' },
-  { name:'Trello', src:'/icons/tools/trello.svg' },
+  { name:'Gemini', src:'/icons/tools/gemini.png' },
+  { name:'Canva', src:'/icons/tools/canva.png' },
+  { name:'Trello', src:'/icons/tools/trello.png' },
 ]
 
 type Service = {
