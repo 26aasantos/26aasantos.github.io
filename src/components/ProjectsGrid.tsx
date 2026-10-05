@@ -4,7 +4,7 @@ import { ArrowUpRight, X, Briefcase, Package, Calculator, Robot } from '@/compon
 type CaseStudy = {
   id: string; number: string; title: string; category: string; summary: string
   overview: string; responsibilities: string[]; tools: string[]; outcome: string
-  Icon: ComponentType<{ size?: number; weight?: string }>
+  Icon: ComponentType<any>
 }
 
 const CASE_STUDIES: CaseStudy[] = [
