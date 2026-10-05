@@ -58,50 +58,12 @@ type Service = {
   bullets: string[]
 }
 
-const BULLETS = ['PLACEHOLDER benefit 1', 'PLACEHOLDER benefit 2', 'PLACEHOLDER benefit 3']
-const SERVICE_DESC = 'PLACEHOLDER - one line on this service.'
-
 const SERVICES: Service[] = [
-  {
-    index: '01',
-    title: 'Service One',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [GHL, REACT, TAILWIND],
-    bullets: BULLETS,
-  },
-  {
-    index: '02',
-    title: 'Service Two',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [GHL, N8N, OPENAI],
-    bullets: BULLETS,
-  },
-  {
-    index: '03',
-    title: 'Service Three',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [GHL, GWS, SLACK],
-    bullets: BULLETS,
-  },
-  {
-    index: '04',
-    title: 'Service Four',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [REACT, VITE, CLOUDFLARE],
-    bullets: BULLETS,
-  },
-  {
-    index: '05',
-    title: 'Service Five',
-    description: SERVICE_DESC,
-    chip: 'PLACEHOLDER',
-    logos: [CLAUDE_CODE, EXPO, CHROME],
-    bullets: BULLETS,
-  },
+  { index:'01', title:'Virtual Assistance', description:'Dependable support for recurring administrative and business tasks.', chip:'Reliable support', logos:[GWS, SLACK], bullets:['Task and information organization','Clear day-to-day communication','Consistent follow-through'] },
+  { index:'02', title:'E-commerce Operations', description:'Practical support for keeping online business activities organized.', chip:'Operations support', logos:[GWS, CHROME], bullets:['Order and task coordination','Product and information upkeep','Routine operational support'] },
+  { index:'03', title:'Accounting & Finance Support', description:'Detail-focused assistance for organized financial administration.', chip:'Detail focused', logos:[GWS], bullets:['Record and information organization','Administrative finance support','Accuracy and consistency'] },
+  { index:'04', title:'Digital Productivity', description:'Helping turn scattered tasks into clearer digital workflows.', chip:'Work smarter', logos:[GWS, SLACK], bullets:['Workflow organization','Digital tool support','Repeatable processes'] },
+  { index:'05', title:'AI-Assisted Productivity', description:'Practical use of AI to support writing, research, and repetitive work.', chip:'AI support', logos:[OPENAI], bullets:['AI-assisted drafting','Research and summarization','Workflow experimentation'] },
 ]
 
 /** The tool marks, stacked horizontally on white tiles (same as Projects). */
@@ -205,9 +167,9 @@ export default function ServicesGrid() {
           <header className="sgrid__flow-head">
             <div className="sgrid__flow-copy">
               <span className="sgrid__flow-eyebrow">Live automation</span>
-              <h2 className="sgrid__flow-title">Your automation headline.</h2>
+              <h2 className="sgrid__flow-title">A practical workflow mindset</h2>
               <p className="sgrid__flow-sub">
-                PLACEHOLDER - tell me what to put here: one sentence on what this example automation does for a client.
+                I focus on reducing friction in repetitive work while keeping people, information, and next steps organized.
               </p>
             </div>
             <ul className="sgrid__flow-tools" role="list" aria-label="Tools that power this flow">
