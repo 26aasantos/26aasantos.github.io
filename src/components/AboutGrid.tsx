@@ -103,8 +103,8 @@ export default function AboutGrid() {
                 <img src="/placeholders/logo.svg" alt="" loading="lazy" decoding="async" />
               </span>
               <span className="agrid__cell-copy">
-                <span className="agrid__cell-title">2026 Training & Development</span>
-                <span className="agrid__cell-meta">Claude · GoHighLevel · Bookkeeping · Zapier</span>
+                <span className="agrid__cell-title">2026 Ongoing Training & Skill Development</span>
+                <span className="agrid__cell-meta">Claude · GoHighLevel (GHL) · Bookkeeping · Zapier</span>
               </span>
               <ArrowUpRight className="agrid__cell-go" size={15} weight="bold" aria-hidden="true" />
             </a>
