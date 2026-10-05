@@ -32,7 +32,7 @@ type Clip = {
   height: number
 }
 
-const CLIPS: Clip[] = []
+const CLIPS: Clip[] = [{ id:'focus', index:'01', src:'', poster:'/avatar.svg', duration:'', kicker:'Professional focus', width:720, height:720 }]
 
 /* The client ledger. `logoSrc` is optional - without it the medallion falls
    back to the icon. */
@@ -60,7 +60,7 @@ export default function TestimonialsGrid() {
   // shot; a paused <video> cannot, and letterboxing one orientation into a
   // fixed frame left a third of the plate as dead margin.
   const [playing, setPlaying] = useState(false)
-  const clip = CLIPS[active]
+  const clip = CLIPS[active] ?? CLIPS[0]
   const hasVideo = clip.src !== ''
   const pick = (i: number) => {
     setActive(i)
@@ -107,7 +107,7 @@ export default function TestimonialsGrid() {
                 aria-label={
                   hasVideo
                     ? `Play client testimonial ${clip.index}, ${clip.duration}`
-                    : `Client testimonial ${clip.index}, no video added yet`
+                    : `Professional focus ${clip.index}, no video added yet`
                 }
               >
                 <img
@@ -130,7 +130,7 @@ export default function TestimonialsGrid() {
                   <span className="tgrid__cover-sub">
                     {hasVideo
                       ? `${clip.duration} · Tap to play`
-                      : 'PLACEHOLDER - add your video to public/testimonials/'}
+                      : 'Experience highlights — no video required'}
                   </span>
                 </span>
               </button>
