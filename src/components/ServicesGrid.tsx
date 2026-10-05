@@ -28,27 +28,9 @@ type Stage = {
 }
 
 const STAGES: Stage[] = [
-  {
-    index: '01',
-    label: 'Step 1',
-    body: 'PLACEHOLDER - one line on what happens in this step.',
-    Icon: MagnetStraight,
-    chips: ['Tag 1', 'Tag 2', 'Tag 3', 'Tag 4'],
-  },
-  {
-    index: '02',
-    label: 'Step 2',
-    body: 'PLACEHOLDER - one line on what happens in this step.',
-    Icon: Timer,
-    chips: ['Tag 1', 'Tag 2', 'Tag 3'],
-  },
-  {
-    index: '03',
-    label: 'Step 3',
-    body: 'PLACEHOLDER - one line on the result the client gets.',
-    Icon: Trophy,
-    chips: ['Tag 1', 'Tag 2', 'Tag 3'],
-  },
+  { index:'01', label:'Understand', body:'Clarify priorities, recurring tasks, and the support your business needs.', Icon:MagnetStraight, chips:['Priorities','Tasks','Goals'] },
+  { index:'02', label:'Organize', body:'Turn information and responsibilities into clear, repeatable workflows.', Icon:Timer, chips:['Systems','Process','Follow-up'] },
+  { index:'03', label:'Improve', body:'Use the right digital and AI-assisted tools to make everyday work easier.', Icon:Trophy, chips:['Efficiency','AI support','Continuous improvement'] },
 ]
 
 /* ---------- The services ---------- */
@@ -143,10 +125,10 @@ export default function ServicesGrid() {
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">Services</span>
         <h1 className="pgrid__title" id="services-title">
-          Your services headline, in one short line.
+          Practical support for busy businesses
         </h1>
         <p className="pgrid__lede">
-          PLACEHOLDER - tell me what to put here: one line on what you offer.
+          Virtual assistance, e-commerce operations, accounting support, and practical AI-assisted productivity.
         </p>
       </header>
 
@@ -157,12 +139,10 @@ export default function ServicesGrid() {
           <div className="sgrid__method-copy">
             <span className="sgrid__method-eyebrow">Your Method</span>
             <h2 className="sgrid__method-title" id="method-title">
-              One. Two. Three.
-              <br />
-              <span>Your method, in three steps.</span>
+              Understand. Organize. Improve.<br /><span>A practical way to support your workflow.</span>
             </h2>
             <p className="sgrid__method-sub">
-              PLACEHOLDER - one sentence on why your method works.
+              The goal is simple: dependable support, clearer processes, and less repetitive work.
             </p>
           </div>
 
