@@ -85,6 +85,21 @@ export default function ServicesGrid() {
       </header>
 
       <div className="home__glass sgrid__glass">
+        <section className="sgrid__tools" aria-labelledby="tools-title">
+          <div className="sgrid__offers-head">
+            <h2 className="sgrid__offers-title" id="tools-title">Tools I Work With</h2>
+            <p className="sgrid__offers-sub">Digital tools I use across business operations, accounting, e-commerce, productivity, and AI-assisted workflows.</p>
+          </div>
+          <ul className="sgrid__tool-grid" role="list">
+            {TOOL_LOGOS.map((tool) => (
+              <li key={tool.name} className="sgrid__tool-item">
+                <span className="sgrid__tool-logo"><img src={tool.src} alt="" width={28} height={28} decoding="async" /></span>
+                <span>{tool.name}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
         {/* One dark plate, the headline on the left, the three stages wired
             in order on the right with a signal running them. */}
         <div className="sgrid__method" aria-labelledby="method-title">
