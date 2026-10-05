@@ -14,21 +14,10 @@ import { profile } from '@/data/profile'
  * visual. Swap the marks below for your own (any square SVG/PNG in public/).
  */
 
-const EXCEL = { src: '/icons/excel.svg', name: 'Excel' }
 const GWS2 = { src: '/icons/googleworkspace.svg', name: 'Google Workspace' }
-const QUICKBOOKS = { src: '/icons/quickbooks.svg', name: 'QuickBooks' }
-const XERO = { src: '/icons/xero.svg', name: 'Xero' }
-const SHOPEE = { src: '/icons/ai/shopee.svg', name: 'Shopee' }
-const LAZADA = { src: '/icons/ai/lazada.svg', name: 'Lazada' }
-const CANVA = { src: '/icons/canva.svg', name: 'Canva' }
-const CAPCUT = { src: '/icons/capcut.svg', name: 'CapCut' }
-const FACEBOOK = { src: '/icons/ai/facebook.svg', name: 'Facebook' }
-const INSTAGRAM = { src: '/icons/ai/instagram.svg', name: 'Instagram' }
-const TIKTOK = { src: '/icons/ai/tiktok.svg', name: 'TikTok' }
-const SLACK2 = { src: '/icons/ai/slack-color.svg', name: 'Slack' }
-const ZOOM = { src: '/icons/ai/zoom.svg', name: 'Zoom' }
-const TEAMS = { src: '/icons/ai/microsoft-teams.svg', name: 'Microsoft Teams' }
-
+const FACEBOOK = { src: '/icons/facebook.svg', name: 'Facebook' }
+const SLACK2 = { src: '/icons/slack.svg', name: 'Slack' }
+const OPENAI = { src: '/icons/openai.svg', name: 'AI productivity' }
 type Capability = {
   index: string
   title: string
@@ -36,10 +25,10 @@ type Capability = {
 }
 
 const CAPABILITIES: Capability[] = [
-  { index: '01', title: 'E-commerce Operations', marks: [SHOPEE, LAZADA, CANVA] },
-  { index: '02', title: 'Accounting & Finance', marks: [EXCEL, QUICKBOOKS, XERO] },
-  { index: '03', title: 'Digital & Social Media', marks: [FACEBOOK, INSTAGRAM, TIKTOK, CAPCUT] },
-  { index: '04', title: 'Remote Business Support', marks: [GWS2, SLACK2, ZOOM, TEAMS] },
+  { index: '01', title: 'E-commerce Operations', marks: [GWS2, FACEBOOK] },
+  { index: '02', title: 'Accounting & Finance Support', marks: [GWS2] },
+  { index: '03', title: 'Digital & Social Media', marks: [FACEBOOK] },
+  { index: '04', title: 'Remote Business & AI Support', marks: [SLACK2, OPENAI] },
 ]
 
 export default function AboutGrid() {
