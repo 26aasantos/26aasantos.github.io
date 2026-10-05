@@ -17,6 +17,7 @@ const ContactGrid = lazy(() => import('@/components/ContactGrid'))
 const Privacy = lazy(() => import('@/components/Privacy'))
 const ToS = lazy(() => import('@/components/ToS'))
 const ThankYou = lazy(() => import('@/components/ThankYou'))
+const CvView = lazy(() => import('@/views/CvView'))
 import './styles/tokens.css'
 import './styles/global.css'
 import './styles/theme-glyph.css'
@@ -45,6 +46,7 @@ import './styles/apple.css'
 // Mobile motion + component pass on top of it (phone shell only).
 import './styles/mobile-pass.css'
 // Last: the perf tiers only ever turn things OFF, so they must win.
+import './styles/cv.css'
 import './styles/perf.css'
 
 // Re-apply this tab's performance verdict before the first paint, so a
@@ -69,6 +71,7 @@ createRoot(container).render(
           <Route path="/experience" element={<ExperienceGrid />} />
           <Route path="/about" element={<AboutGrid />} />
           <Route path="/contact" element={<ContactGrid />} />
+          <Route path="/cv" element={<Suspense fallback={null}><CvView /></Suspense>} />
         </Route>
         {/* Standalone pages: their own layout, no rail, document scroll. */}
         <Route path="/privacy" element={<Suspense fallback={null}><Privacy /></Suspense>} />
