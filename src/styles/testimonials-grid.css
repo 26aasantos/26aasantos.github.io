@@ -402,3 +402,237 @@
   .tgrid__client-role { font-size: 11.5px; }
   .tgrid__client-tag { font-size: 12px; }
 }
+
+
+/* ---------- Recruiter-friendly experience timeline ---------- */
+.tgrid__experience-shell { overflow: hidden; }
+
+.tgrid__career-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.tgrid__career-photo {
+  position: relative;
+  min-height: 220px;
+  flex: 1 1 auto;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: #0B1120;
+  border: 1px solid var(--line-strong);
+}
+
+.tgrid__career-photo img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.tgrid__career-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 35%, rgba(11,17,32,.84) 100%);
+}
+
+.tgrid__career-photo-copy {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #fff;
+}
+
+.tgrid__career-photo-copy span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  opacity: .72;
+}
+
+.tgrid__career-photo-copy strong {
+  font-size: clamp(15px, 1.1vw, 19px);
+  line-height: 1.25;
+}
+
+.tgrid__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.tgrid__metrics > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 11px 12px;
+  border-radius: 12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.tgrid__metrics strong {
+  color: var(--navy);
+  font-size: 19px;
+  line-height: 1.05;
+}
+
+.tgrid__metrics span {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.tgrid__ai-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 13px;
+  border-radius: 12px;
+  background: var(--tint);
+  border: 1px solid var(--line);
+  color: var(--orange-ink);
+}
+
+.tgrid__ai-note > svg { flex: 0 0 auto; margin-top: 1px; }
+.tgrid__ai-note div { display: flex; flex-direction: column; gap: 2px; }
+.tgrid__ai-note strong { font-size: 12px; color: var(--navy); }
+.tgrid__ai-note span { font-size: 11px; line-height: 1.4; color: var(--muted); }
+
+.tgrid__timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0 4px 0 0;
+  list-style: none;
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+.tgrid__timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 12px;
+  padding: 0 0 20px;
+}
+
+.tgrid__timeline-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 39px;
+  bottom: 0;
+  width: 1px;
+  background: var(--line-strong);
+}
+
+.tgrid__timeline-marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: var(--orange);
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 5px 18px -12px rgba(6,12,26,.4);
+}
+
+.tgrid__timeline-content {
+  min-width: 0;
+  padding: 0 0 2px;
+}
+
+.tgrid__timeline-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-bottom: 4px;
+}
+
+.tgrid__timeline-year {
+  color: var(--orange-ink);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.tgrid__timeline-company {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.tgrid__timeline-content h3 {
+  margin: 0 0 5px;
+  color: var(--navy);
+  font-size: clamp(15px, 1.05vw, 19px);
+  line-height: 1.2;
+  letter-spacing: -.012em;
+}
+
+.tgrid__timeline-summary {
+  margin: 0 0 7px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.tgrid__timeline-bullets {
+  margin: 0;
+  padding-left: 17px;
+  color: var(--muted);
+  font-size: 11.5px;
+  line-height: 1.42;
+}
+
+.tgrid__timeline-bullets li + li { margin-top: 3px; }
+
+.tgrid__timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tgrid__timeline-tags li {
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: var(--navy);
+  background: var(--tint);
+  border: 1px solid var(--line);
+  font-size: 10px;
+  font-weight: 650;
+}
+
+@media (max-width: 1099px) {
+  .tgrid__career-photo { min-height: 300px; }
+  .tgrid__career-photo img { min-height: 300px; }
+  .tgrid__timeline { overflow: visible; }
+}
+
+@media (max-width: 639px) {
+  .tgrid__career-photo { min-height: 260px; }
+  .tgrid__career-photo img { min-height: 260px; }
+  .tgrid__timeline-item { grid-template-columns: 34px minmax(0, 1fr); gap: 9px; }
+  .tgrid__timeline-item:not(:last-child)::before { left: 16px; top: 34px; }
+  .tgrid__timeline-marker { width: 32px; height: 32px; border-radius: 10px; }
+  .tgrid__timeline-marker svg { width: 16px; height: 16px; }
+}
