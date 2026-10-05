@@ -93,7 +93,7 @@ export default function ServicesGrid() {
           <ul className="sgrid__tool-grid" role="list">
             {TOOL_LOGOS.map((tool) => (
               <li key={tool.name} className="sgrid__tool-item">
-                <span className="sgrid__tool-logo"><img src={tool.src} alt="" width={28} height={28} decoding="async" /></span>
+                <span className="sgrid__tool-logo">{tool.src ? <img src={tool.src} alt="" width={28} height={28} decoding="async" /> : <span className="sgrid__tool-mark" aria-hidden="true">{tool.mark}</span>}</span>
                 <span>{tool.name}</span>
               </li>
             ))}
