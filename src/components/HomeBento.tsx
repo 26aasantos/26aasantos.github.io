@@ -174,11 +174,7 @@ export default function HomeBento() {
             {[...CLIENTS, ...CLIENTS].map((c, i) => (
               <span key={i} className="bento__review">
                 <span className="bento__review-top">
-                  {c.logo ? (
-                    <img src={c.logo} alt="" width={18} height={18} />
-                  ) : (
-                    <Quotes size={14} weight="fill" />
-                  )}
+                  <Quotes size={14} weight="fill" />
                   <b>{c.name}</b>
                 </span>
                 <span className="bento__review-role">{c.role}</span>
