@@ -3,7 +3,7 @@ import { Play, Gauge, Robot, Code } from '@/components/slab'
 import type { Icon } from '@/components/slab'
 
 /**
- * TestimonialsGrid - the Testimonials view as a fixed viewport.
+ * ExperienceGrid - the Experience view as a fixed viewport.
  *
  * Two columns inside one glass sheet: the video proof on the left, the client
  * ledger on the right. The page is sized to the panel and does not scroll, so
@@ -68,10 +68,10 @@ export default function TestimonialsGrid() {
   }
 
   return (
-    <section className="pgrid tgrid" aria-labelledby="testimonials-title">
+    <section className="pgrid tgrid" aria-labelledby="experience-title">
       <header className="pgrid__head">
-        <span className="pgrid__eyebrow">Testimonials</span>
-        <h1 className="pgrid__title" id="testimonials-title">
+        <span className="pgrid__eyebrow">Experience &amp; Expertise</span>
+        <h1 className="pgrid__title" id="experience-title">
           Experience that supports the work
         </h1>
         <p className="pgrid__lede">
@@ -139,7 +139,7 @@ export default function TestimonialsGrid() {
 
           {/* The picker is one segmented control, not two loose chips: two
               cells on a shared plate, the active one lit. */}
-          <div className="tgrid__picker" role="group" aria-label="Choose a testimonial">
+          <div className="tgrid__picker" role="group" aria-label="Choose an experience highlight">
             {CLIPS.map((c, i) => (
               <button
                 key={c.id}
@@ -152,7 +152,7 @@ export default function TestimonialsGrid() {
                   <img src={c.poster} alt="" loading="lazy" decoding="async" />
                 </span>
                 <span className="tgrid__pick-copy">
-                  <span className="tgrid__pick-kicker">Highlight {c.index}</span>
+                  <span className="tgrid__pick-kicker">Experience highlight {c.index}</span>
                   <span className="tgrid__pick-meta">{c.duration}</span>
                 </span>
               </button>
