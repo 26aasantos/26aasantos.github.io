@@ -32,7 +32,7 @@ type Clip = {
   height: number
 }
 
-const CLIPS: Clip[] = [{ id:'focus', index:'01', src:'', poster:'/avatar.svg', duration:'', kicker:'Professional focus', width:720, height:720 }]
+const CLIPS: Clip[] = [{ id:'focus', index:'01', src:'', poster:'/profile-photo.png', duration:'', kicker:'Professional profile', width:720, height:720 }]
 
 /* The client ledger. `logoSrc` is optional - without it the medallion falls
    back to the icon. */
