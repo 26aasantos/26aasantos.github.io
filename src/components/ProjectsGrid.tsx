@@ -1,363 +1,136 @@
-import { Fragment, useCallback, useEffect, useRef, useState, type ComponentType, type ReactNode } from 'react'
-import { createPortal } from 'react-dom'
-import { ArrowUpRight, X, Ticket, Robot, FlowArrow, CursorClick } from '@/components/slab'
-import { FlowIcon, PlanIcon, GlobeIcon, SparkIcon, DeviceIcon } from './ProjectIcons'
-import { AutomationsPanel, PlanPanel, TicketingPanel, FrameworkPanel, WorkflowPanel, BarrelPanel, AIWindow, AppsWindow } from './ProjectPanels'
-import { gymFunnel, bookingFunnel, websiteFunnel, type Funnel } from '@/data/funnels'
-import { mobileApps } from '@/data/projects'
-import { aiStack, type StackNode } from '@/data/ai-stack'
-import { useIsPhone } from '@/hooks/useMediaQuery'
+import { useCallback, useEffect, useRef, useState, type ComponentType } from 'react'
+import { ArrowUpRight, X, Briefcase, Package, Calculator, Robot } from '@/components/slab'
 
-/**
- * Projects, as one viewport in Home's bento language: a glass panel of six
- * cards, each previewing its own body of work with a live inner track, each
- * opening the work itself in a near-fullscreen dialog (see ProjectPanels for
- * the first three; the rest are the sections the long page used to stack).
- *
- * The dialog is a portal at z 8000, under the funnel preview (9000) so the
- * barrel's own "open this page" dialog can still stack on top of it.
- */
-type Project = {
-  id: string
-  index: string
-  title: string
-  desc: string
-  Icon: ComponentType<{ size?: number }>
-  eyebrow: string
-  Section: ComponentType
-  span?: 2
-  /** Open Builds style: a small orange kicker above the title. */
-  kicker?: string
-  /** Real marks of what the work was built in; replaces the icon tile. */
-  logos?: string[]
-  Preview: ComponentType
-  /** Phone filter bucket. */
-  cat: Cat
+type CaseStudy = {
+  id: string; number: string; title: string; category: string; summary: string
+  overview: string; responsibilities: string[]; tools: string[]; outcome: string
+  Icon: ComponentType<{ size?: number; weight?: string }>
 }
 
-type Cat = 'work' | 'sites' | 'apps' | 'ai'
-const FILTERS: { key: Cat | 'all'; label: string }[] = [
-  { key: 'all', label: 'All' },
-  { key: 'work', label: 'Work' },
-  { key: 'sites', label: 'Sites' },
-  { key: 'apps', label: 'Apps' },
-  { key: 'ai', label: 'AI' },
+const CASE_STUDIES: CaseStudy[] = [
+  {
+    id: 'ecommerce', number: '01', title: 'E-commerce Operations', category: 'Beauty Alley OPC · 2020–2025',
+    summary: 'Built and managed day-to-day retail and wholesale e-commerce operations from the ground up.',
+    overview: 'I started as a one-person operation and personally handled the full order cycle. As the business grew, I hired and coordinated staff to help prepare and pack products for retail buyers, resellers, and wholesalers.',
+    responsibilities: [
+      'Created, maintained, and managed product listings, including titles, descriptions, photos, pricing, variations, and promotions.',
+      'Managed Shopee and Lazada seller operations, including orders, customer concerns, fulfillment, and online sales activities.',
+      'Handled the order process from customer purchase through stock checking, preparation, packing, shipping, tracking, and customer support.',
+      'Managed both retail and wholesale/reseller orders across approximately 1,000–2,000 SKUs.',
+      'Coordinated staff as the business grew and delegated product preparation and packing tasks.',
+    ],
+    tools: ['Shopee', 'Lazada', 'Google Sheets'],
+    outcome: 'Supported 100+ orders per day, with peak periods reaching approximately 1,000–2,000 orders.',
+    Icon: Briefcase,
+  },
+  {
+    id: 'inventory', number: '02', title: 'Inventory & Procurement', category: 'Beauty Alley OPC · Operations',
+    summary: 'Kept purchasing and stock decisions organized using Google Sheets and physical inventory checks.',
+    overview: 'Inventory and purchasing were handled as part of the day-to-day business operation. I combined spreadsheet tracking with physical stock counts and personally managed supplier and purchasing decisions.',
+    responsibilities: [
+      'Tracked inventory using Google Sheets together with physical stock counts.',
+      'Monitored stock levels and decided when products needed to be reordered.',
+      'Contacted suppliers, compared prices, and negotiated pricing, discounts, and payment terms.',
+      'Coordinated product requirements, supplier orders, payments, and deliveries.',
+      'Connected purchasing decisions with product demand, available stock, and distribution needs.',
+    ],
+    tools: ['Google Sheets', 'Physical stock counts', 'Supplier coordination'],
+    outcome: 'Managed inventory and procurement across approximately 1,000–2,000 SKUs for both retail and wholesale operations.',
+    Icon: Package,
+  },
+  {
+    id: 'finance', number: '03', title: 'Business Administration & Finance', category: 'Beauty Alley OPC · Finance & Administration',
+    summary: 'Managed the business records and financial activities needed to keep a growing operation organized.',
+    overview: 'For Beauty Alley, I managed financial and administrative records using Google Sheets. My responsibilities covered the full range of routine business finance activities rather than one isolated accounting task.',
+    responsibilities: [
+      'Recorded and monitored sales, expenses, supplier payments, accounts payable, and payroll.',
+      'Tracked cash flow, bank transactions, inventory costs, and business expenses.',
+      'Prepared financial reports and maintained organized business records.',
+      'Performed bank reconciliation and reviewed records for accuracy.',
+      'Managed bookkeeping activities and maintained the financial information needed for business decisions.',
+      'Developed familiarity with accounting software and can create an account while continuing to learn the system.',
+    ],
+    tools: ['Google Sheets', 'Banking records', 'Accounting software — learning/developing'],
+    outcome: 'Maintained practical, hands-on finance and administration coverage alongside daily e-commerce operations.',
+    Icon: Calculator,
+  },
+  {
+    id: 'ai', number: '04', title: 'AI-Assisted Productivity', category: 'Ongoing learning · 2026',
+    summary: 'Building practical AI skills to support writing, research, organization, learning, and repetitive work.',
+    overview: 'AI is a developing skill area for me rather than a claim of specialist expertise. I am actively learning and practicing with several tools to understand where AI can make everyday business and administrative work clearer and more efficient.',
+    responsibilities: [
+      'Use AI for writing, rewording, brainstorming, research, summarization, and organizing information.',
+      'Explore templates, workflow ideas, content creation, and repetitive-task support.',
+      'Continue learning ChatGPT, Claude, Gemini, Canva AI, GoHighLevel, and Zapier.',
+      'Apply AI-assisted thinking to practical business, administrative, e-commerce, and productivity tasks.',
+      'Build familiarity with automation concepts while keeping the focus on useful, real-world workflows.',
+    ],
+    tools: ['ChatGPT', 'Claude', 'Gemini', 'Canva AI', 'GoHighLevel', 'Zapier'],
+    outcome: 'An ongoing skill-development area that complements my existing business operations, finance, and administrative experience.',
+    Icon: Robot,
+  },
 ]
 
-/** Example tool marks, from public/icons. Swap for what you build with. */
-const GHL = '/icons/gohighlevel.png'
-const CLAUDE_CODE = '/icons/claude-code-logo.png'
-const CODEX = '/icons/ai/codex.svg'
-const HERMES = '/icons/ai/hermes.svg'
-const PLAY = '/icons/ai/googleplay.svg'
-const CHROME = '/icons/ai/googlechrome.svg'
-const EXPO = '/icons/ai/expo.svg'
-
-const WF_SHOTS = ['project-1.jpg', 'project-2.jpg', 'project-3.jpg', 'project-4.jpg'].map(
-  (f) => `/placeholders/${f}`,
-)
-
-const FUNNEL_SHOTS = [gymFunnel[0], bookingFunnel[0], websiteFunnel[0]].filter(Boolean)
-const thumbSrc = (f: Funnel) => `/${f.dir ?? 'funnels'}/thumbs/${f.file.replace('.html', '.jpeg')}`
-
-const APP_SHOTS = [
-  ...mobileApps.map((a) => a.imageSrc).filter((s): s is string => !!s),
-  '/placeholders/extension-1.jpg',
-  '/placeholders/extension-2.jpg',
-]
-
-const BUILD_DESC = 'Portfolio demonstration showing a practical business-support workflow. These samples are demonstrations, not client work.'
-
-/** The three featured builds: each its own card in the stack, each its own
- *  pop-up. */
-const BUILDS: Project[] = [
-  { id: 'ticketing', cat: 'work', index: '03', kicker: 'Portfolio sample', title: 'Business Support Workflow', desc: BUILD_DESC, Icon: () => <Ticket size={20} weight="duotone" />, logos: [GHL], eyebrow: 'Featured build', Section: TicketingPanel, Preview: () => null },
-  { id: 'framework', cat: 'ai', index: '04', kicker: 'Portfolio sample', title: 'AI-Assisted Productivity', desc: BUILD_DESC, Icon: () => <Robot size={20} weight="duotone" />, logos: [CLAUDE_CODE], eyebrow: 'Featured build', Section: FrameworkPanel, Preview: () => null },
-  { id: 'workflow', cat: 'ai', index: '05', kicker: 'Portfolio sample', title: 'Digital Workflow Demo', desc: BUILD_DESC, Icon: () => <FlowArrow size={20} weight="duotone" />, logos: [CLAUDE_CODE, CODEX, HERMES], eyebrow: 'Featured build', Section: WorkflowPanel, Preview: () => null },
-]
-
-const leaves = (n: StackNode): StackNode[] => (n.children?.length ? n.children.flatMap(leaves) : [n])
-const AI_LEAVES = leaves(aiStack)
-
-/* ---------- Previews ---------- */
-
-function WorkflowsPreview() {
-  return (
-    <div className="bento__media bento__reel" aria-hidden="true">
-      <div className="bento__reel-track">
-        {[...WF_SHOTS, ...WF_SHOTS].map((src, i) => (
-          <span key={i} className="bento__shot">
-            <img src={src} alt="" loading="lazy" decoding="async" />
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-/** A paper mock of the plan document, the way SamplePlan previews it. */
-function PlanPreview() {
-  return (
-    <div className="bento__media bento__doc" aria-hidden="true">
-      <span className="bento__doc-eyebrow">Sample business document</span>
-      <span className="bento__doc-title">Business Operations Plan</span>
-      <span className="bento__doc-flow">
-        <i>Step</i>
-        <i>Step</i>
-        <i>Review</i>
-        <i className="is-on">Result</i>
-      </span>
-      <span className="bento__doc-line" />
-      <span className="bento__doc-line bento__doc-line--short" />
-    </div>
-  )
-}
-
-/** The three builds as Open Builds rows: plate, eyebrow, title, arrow. */
-function FunnelsPreview() {
-  return (
-    <div className="bento__media bento__fan" aria-hidden="true">
-      {FUNNEL_SHOTS.map((f, i) => (
-        <span key={f.file} className="bento__photo bento__photo--page" style={{ ['--i' as string]: i }}>
-          <img src={thumbSrc(f)} alt="" loading="lazy" decoding="async" />
-        </span>
-      ))}
-    </div>
-  )
-}
-
-function AIPreview() {
-  const half = Math.ceil(AI_LEAVES.length / 2)
-  const rows = [AI_LEAVES.slice(0, half), AI_LEAVES.slice(half)]
-  return (
-    <div className="bento__media bento__chips" aria-hidden="true">
-      {rows.map((row, r) => (
-        <div key={r} className="bento__chip-row" data-dir={r ? 'right' : 'left'}>
-          <div className="bento__chip-track">
-            {[...row, ...row].map((n, i) => (
-              <span key={`${n.id}-${i}`} className="bento__chip" data-status={n.status}>
-                <n.Icon size={15} weight="duotone" />
-                {n.name}
-              </span>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function AppsPreview() {
-  return (
-    <div className="bento__media bento__reel bento__reel--row" aria-hidden="true">
-      <div className="bento__reel-track">
-        {[...APP_SHOTS, ...APP_SHOTS].map((src, i) => (
-          <span key={i} className="bento__shot bento__shot--app">
-            <img src={src} alt="" loading="lazy" decoding="async" />
-          </span>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-const PROJECTS: Project[] = [
-  { id: 'workflows', cat: 'work', index: '01', title: 'Business Operations Demo', desc: 'A demonstration of organized business tasks, follow-ups, and operational workflows.', Icon: FlowIcon, logos: [GHL], eyebrow: 'Screenshots', Section: AutomationsPanel, span: 2, Preview: WorkflowsPreview },
-  { id: 'plan', cat: 'work', index: '02', title: 'Business Administration Sample', desc: 'A sample planning document showing how recurring business work can be organized.', Icon: PlanIcon, logos: [GHL], eyebrow: 'Sample document', Section: PlanPanel, Preview: PlanPreview },
-  { id: 'funnels', cat: 'sites', index: '06', title: 'Web & Landing Page Demos', desc: 'Selected demonstration pages for lead capture, booking, and business website use cases.', Icon: GlobeIcon, logos: [GHL], eyebrow: 'Pages and sites', Section: BarrelPanel, Preview: FunnelsPreview },
-  { id: 'ai', cat: 'ai', index: '07', title: 'AI-Assisted Productivity', desc: 'Current 2026 training and practical learning in Claude, GoHighLevel (GHL), Zapier automation, and bookkeeping workflows.', Icon: SparkIcon, logos: [CLAUDE_CODE, CODEX, HERMES], eyebrow: 'AI-assisted workflows', Section: AIWindow, Preview: AIPreview },
-  { id: 'apps', cat: 'apps', index: '08', title: 'Apps & Digital Tools', desc: 'Selected app and tool demonstrations created as portfolio samples.', Icon: DeviceIcon, logos: [PLAY, EXPO, CHROME], eyebrow: 'Digital tools', Section: AppsWindow, span: 2, Preview: AppsPreview },
-]
-
-/** The icon tile, or the real marks stacked horizontally in its place. */
-function Marks({ p, size = 22 }: { p: Project; size?: number }) {
-  if (!p.logos?.length) {
-    return (
-      <span className="bento__icon">
-        <p.Icon size={size} />
-      </span>
-    )
-  }
-  return (
-    <span className="bento__logos" aria-hidden="true">
-      {p.logos.map((src) => (
-        <span key={src} className="bento__logo">
-          <img src={src} alt="" width={22} height={22} decoding="async" />
-        </span>
-      ))}
-    </span>
-  )
-}
-
-/* ---------- Dialog ----------
-   A backdrop, a close button in the corner, and the work. No panel, no
-   header: each Section brings its own window (or, for the strip, none). */
-function ProjectModal({ project, onClose, children }: { project: Project; onClose: () => void; children: ReactNode }) {
+function CaseStudyModal({ study, onClose }: { study: CaseStudy; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null)
-
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-    }
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') onClose() }
     document.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
     requestAnimationFrame(() => closeRef.current?.focus())
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-    }
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
   }, [onClose])
-
-  return createPortal(
-    <div
-      className="pmodal"
-      role="dialog"
-      aria-modal="true"
-      aria-label={project.title}
-      onClick={(e) => {
-        if (e.target === e.currentTarget) onClose()
-      }}
-    >
-      <button ref={closeRef} type="button" className="pmodal__close" onClick={onClose} aria-label="Close">
-        <X size={18} weight="bold" />
-      </button>
-      <div className="pmodal__stage">{children}</div>
-    </div>,
-    document.body,
+  return (
+    <div className="pmodal" role="dialog" aria-modal="true" aria-label={study.title}
+      onClick={(event) => { if (event.target === event.currentTarget) onClose() }}>
+      <button ref={closeRef} type="button" className="pmodal__close" onClick={onClose} aria-label="Close"><X size={18} weight="bold" /></button>
+      <article className="case-study-modal">
+        <div className="case-study-modal__top"><span className="case-study-modal__number">{study.number}</span><span className="case-study-modal__category">{study.category}</span></div>
+        <div className="case-study-modal__icon"><study.Icon size={26} weight="duotone" /></div>
+        <h2>{study.title}</h2>
+        <p className="case-study-modal__summary">{study.summary}</p>
+        <div className="case-study-modal__section"><h3>Overview</h3><p>{study.overview}</p></div>
+        <div className="case-study-modal__section"><h3>What I handled</h3><ul>{study.responsibilities.map((item) => <li key={item}>{item}</li>)}</ul></div>
+        <div className="case-study-modal__section"><h3>Tools &amp; methods</h3><div className="case-study-modal__tags">{study.tools.map((tool) => <span key={tool}>{tool}</span>)}</div></div>
+        <div className="case-study-modal__outcome"><strong>Result / scale</strong><span>{study.outcome}</span></div>
+      </article>
+    </div>
   )
 }
 
-/* ---------- The page ---------- */
-
 export default function ProjectsGrid() {
-  const [open, setOpen] = useState<Project | null>(null)
-  const phone = useIsPhone()
-  const [cat, setCat] = useState<Cat | 'all'>('all')
-  const keep = (p: Project) => !phone || cat === 'all' || p.cat === cat
-  const projects = PROJECTS.filter(keep)
-  const builds = BUILDS.filter(keep)
+  const [open, setOpen] = useState<CaseStudy | null>(null)
   const triggerRef = useRef<HTMLElement | null>(null)
-
-  const show = useCallback((p: Project, el: HTMLElement) => {
-    triggerRef.current = el
-    setOpen(p)
-  }, [])
-  const close = useCallback(() => {
-    setOpen(null)
-    requestAnimationFrame(() => triggerRef.current?.focus())
-  }, [])
-
-  const stack = builds.length > 0 ? (
-    <div className="bento__stack">
-
-        {builds.map((b) => (
-
-          <button
-
-            key={b.id}
-
-            type="button"
-
-            className="bento__card bento__card--btn bento__card--build"
-
-            onClick={(e) => show(b, e.currentTarget)}
-
-            aria-haspopup="dialog"
-
-          >
-
-            <span className="bento__build-plate">
-
-              {b.logos?.length ? <img src={b.logos[0]} alt="" width={22} height={22} /> : <b.Icon />}
-
-            </span>
-
-            <span className="bento__build-text">
-
-              <span className="bento__kicker">{b.kicker}</span>
-
-              <span className="bento__build-title">{b.title}</span>
-
-              <span className="bento__build-desc">{b.desc}</span>
-
-            </span>
-
-            <span className="bento__build-arrow">
-
-              <ArrowUpRight size={13} weight="bold" aria-hidden="true" />
-
-            </span>
-
-          </button>
-
-        ))}
-
-      </div>
-  ) : null
-
+  const show = useCallback((study: CaseStudy, element: HTMLElement) => { triggerRef.current = element; setOpen(study) }, [])
+  const close = useCallback(() => { setOpen(null); requestAnimationFrame(() => triggerRef.current?.focus()) }, [])
   return (
     <section className="pgrid" aria-labelledby="projects-title">
       <header className="pgrid__head">
-        <span className="pgrid__eyebrow">Projects</span>
-        <h1 className="pgrid__title" id="projects-title">
-          Portfolio Samples & Demonstrations
-        </h1>
-        <p className="pgrid__lede">A collection of demonstration projects showing business support, digital workflows, web experiences, and AI-assisted productivity. These are portfolio samples, not client work.</p>
+        <span className="pgrid__eyebrow">Projects &amp; Case Studies</span>
+        <h1 className="pgrid__title" id="projects-title">Real business experience, presented as case studies</h1>
+        <p className="pgrid__lede">Selected examples from my hands-on e-commerce, inventory, procurement, finance, administration, and ongoing AI-assisted productivity learning. These case studies are based on my actual work experience.</p>
       </header>
-
-      {phone && (
-        <div className="pfilter" role="group" aria-label="Filter projects">
-          {FILTERS.map((f) => (
-            <button
-              key={f.key}
-              type="button"
-              className="pfilter__btn"
-              aria-pressed={cat === f.key}
-              onClick={() => setCat(f.key)}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-      )}
-
       <div className="home__glass pgrid__glass">
-        {/* Hung on the sheet's top edge so it reads as a tag on the container,
-            not a seventh card. aria-hidden: the lede already says it. */}
-        <span className="pgrid__hint" aria-hidden="true">
-          <CursorClick size={14} weight="duotone" />
-          Click a card to open it
-        </span>
-        <div className="bento bento--projects">
-          {projects.map((p) => (
-            <Fragment key={p.id}>
-            <button
-              type="button"
-              className={`bento__card bento__card--btn${p.span === 2 ? ' bento__card--wide' : ''}`}
-              data-id={p.id}
-              onClick={(e) => show(p, e.currentTarget)}
-              aria-haspopup="dialog"
-            >
-              <span className="bento__head">
-                <Marks p={p} />
-                <span className="bento__title">{p.title}</span>
-                <span className="bento__desc">{p.desc}</span>
-                <ArrowUpRight size={15} weight="bold" aria-hidden="true" className="bento__arrow" />
-              </span>
-              <p.Preview />
-            </button>
-            {p.id === 'plan' && stack}
-            </Fragment>
-          ))}
-          {!projects.some((p) => p.id === 'plan') && stack}
+        <span className="pgrid__hint" aria-hidden="true"><ArrowUpRight size={14} weight="duotone" /> Open a case study</span>
+        <div className="bento bento--projects case-study-grid">
+          {CASE_STUDIES.map((study) => {
+            const Icon = study.Icon
+            return (
+              <button key={study.id} type="button" className="bento__card bento__card--btn case-study-card"
+                onClick={(event) => show(study, event.currentTarget)} aria-haspopup="dialog">
+                <span className="bento__head">
+                  <span className="bento__logos"><span className="bento__logo"><Icon size={22} weight="duotone" /></span></span>
+                  <span className="bento__title">{study.title}</span>
+                  <span className="bento__desc">{study.summary}</span>
+                  <ArrowUpRight size={15} weight="bold" aria-hidden="true" className="bento__arrow" />
+                </span>
+                <span className="case-study-card__meta"><span>{study.number}</span><span>{study.category}</span></span>
+              </button>
+            )
+          })}
         </div>
       </div>
-
-      {open && (
-        <ProjectModal project={open} onClose={close}>
-          <open.Section />
-        </ProjectModal>
-      )}
+      {open && <CaseStudyModal study={open} onClose={close} />}
     </section>
   )
 }
