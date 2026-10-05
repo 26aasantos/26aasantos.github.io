@@ -47,7 +47,7 @@ export default function AboutGrid() {
       <div className="home__glass agrid__glass">
         <div className="agrid__copy">
           <p className="agrid__lead">
-            I combine hands-on business experience with accounting, administrative, e-commerce, and digital skills.\n            <span> My goal is simple: keep work organized, accurate, and moving forward.</span>
+            I combine hands-on business experience with accounting, administrative, e-commerce, and digital skills. <span> My goal is simple: keep work organized, accurate, and moving forward.</span>
           </p>
 
           <p className="agrid__note">
