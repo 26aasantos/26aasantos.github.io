@@ -636,3 +636,11 @@
   .tgrid__timeline-marker { width: 32px; height: 32px; border-radius: 10px; }
   .tgrid__timeline-marker svg { width: 16px; height: 16px; }
 }
+
+
+/* The experience ledger is a real reading page. Let the shell scroller carry the full content instead of trapping a tall timeline inside a fixed sheet. */
+@media (min-width: 1100px) {
+  .pgrid.tgrid { height: auto; min-height: 100%; display: flex; }
+  .tgrid__glass { height: auto; min-height: 0; }
+  .tgrid__ledger { min-height: 0; }
+}
