@@ -32,28 +32,7 @@ type Clip = {
   height: number
 }
 
-const CLIPS: Clip[] = [
-  {
-    id: 'clip-1',
-    index: '01',
-    src: '',
-    poster: '/placeholders/testimonial-1.jpg',
-    duration: '0:00',
-    kicker: 'Client testimonial',
-    width: 720,
-    height: 1080,
-  },
-  {
-    id: 'clip-2',
-    index: '02',
-    src: '',
-    poster: '/placeholders/testimonial-2.jpg',
-    duration: '0:00',
-    kicker: 'Client testimonial',
-    width: 720,
-    height: 1080,
-  },
-]
+const CLIPS: Clip[] = []
 
 /* The client ledger. `logoSrc` is optional - without it the medallion falls
    back to the icon. */
@@ -69,36 +48,9 @@ type Client = {
 }
 
 const CLIENTS: Client[] = [
-  {
-    index: '01',
-    name: 'Client Name 1',
-    role: 'PLACEHOLDER ROLE',
-    daily:
-      'PLACEHOLDER - tell me what to put here: one or two sentences on what you run or build for this client day to day.',
-    work: ['Tag', 'Tag', 'Tag'],
-    logoSrc: '/placeholders/logo.svg',
-    Icon: Gauge,
-  },
-  {
-    index: '02',
-    name: 'Client Name 2',
-    role: 'PLACEHOLDER ROLE',
-    daily:
-      'PLACEHOLDER - tell me what to put here: one or two sentences on what you run or build for this client day to day.',
-    work: ['Tag', 'Tag', 'Tag'],
-    logoSrc: '/placeholders/logo.svg',
-    Icon: Robot,
-  },
-  {
-    index: '03',
-    name: 'Client Name 3',
-    role: 'PLACEHOLDER ROLE',
-    daily:
-      'PLACEHOLDER - tell me what to put here: one or two sentences on what you run or build for this client day to day.',
-    work: ['Tag', 'Tag', 'Tag'],
-    logoSrc: '/placeholders/logo.svg',
-    Icon: Code,
-  },
+  { index:'01', name:'E-commerce Operations', role:'5+ years of experience', daily:'Experience supporting online business operations with an organized, detail-focused approach.', work:['Operations','Coordination','Support'], Icon:Gauge },
+  { index:'02', name:'Accounting & Finance', role:'2+ years of experience', daily:'Experience supporting accounting and finance work where accuracy, organization, and consistency matter.', work:['Accuracy','Administration','Detail'], Icon:Robot },
+  { index:'03', name:'AI & Digital Productivity', role:'Developing practical skills', daily:'Building practical AI-assisted workflows to improve writing, research, organization, and repetitive tasks.', work:['AI support','Research','Workflows'], Icon:Code },
 ]
 
 export default function TestimonialsGrid() {
@@ -120,10 +72,10 @@ export default function TestimonialsGrid() {
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">Testimonials</span>
         <h1 className="pgrid__title" id="testimonials-title">
-          Your testimonials headline.
+          Experience that supports the work
         </h1>
         <p className="pgrid__lede">
-          PLACEHOLDER - tell me what to put here: one line that introduces the videos and the client list.
+          A blend of e-commerce, accounting and finance experience, with a growing focus on practical AI-assisted productivity.
         </p>
       </header>
 
@@ -211,8 +163,8 @@ export default function TestimonialsGrid() {
         {/* Right: the client ledger, one row per client. */}
         <div className="tgrid__ledger">
           <div className="tgrid__ledger-head">
-            <h2 className="tgrid__ledger-title">Your client list headline here.</h2>
-            <p className="tgrid__ledger-sub">Short supporting line.</p>
+            <h2 className="tgrid__ledger-title">What I bring</h2>
+            <p className="tgrid__ledger-sub">Reliable support backed by real operations experience.</p>
           </div>
 
           {/* One plate, three rows split by hairlines. Three boxed cards each
