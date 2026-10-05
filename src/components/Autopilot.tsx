@@ -87,9 +87,9 @@ const LINKS: Link[] = [
 ]
 
 export const TOOLS: { Icon: Icon; label: string }[] = [
-  { Icon: Plug,           label: 'Your CRM' },
-  { Icon: EnvelopeSimple, label: 'Email & SMS' },
-  { Icon: Sparkle,        label: 'AI Assistant' },
+  { Icon: Plug,           label: 'Google Workspace' },
+  { Icon: EnvelopeSimple, label: 'QuickBooks & Xero' },
+  { Icon: Sparkle,        label: 'AI-Assisted Tools' },
 ]
 
 const SVGNS = 'http://www.w3.org/2000/svg'
