@@ -38,7 +38,6 @@ const STAGES: Stage[] = [
 // Example tool marks from /public/icons. Swap for the tools you actually use.
 const GWS = '/icons/googleworkspace.svg'
 const OPENAI = '/icons/openai.svg'
-const CANVA = '/icons/canva.svg'
 const EXCEL = '/icons/excel.svg'
 const QUICKBOOKS = '/icons/quickbooks.svg'
 const XERO = '/icons/xero.svg'
